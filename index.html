@@ -11,9 +11,19 @@
 @media(min-width:561px) and (max-width:820px){.rail{padding:28px 20px}.main{padding:32px 26px}}
 @page{size:A4;margin:0}
 @media print{body{background:#fff;font-size:12px}.resume{width:min(210mm,100%);min-height:297mm;margin:0;box-shadow:none;break-after:auto}.rail{padding:14mm 9mm}.main{padding:14mm 13mm 13mm 12mm}.job{break-inside:avoid}}
-</style>
+.page-tools{width:min(210mm,100%);margin:24px auto 12px;padding:0 12px;display:flex;justify-content:flex-end;gap:10px;position:relative;z-index:2}.tool-button{appearance:none;display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:9px 14px;border:1px solid #c8d6db;border-radius:8px;background:#fff;color:var(--ink);font-family:inherit;font-size:13px;font-weight:600;line-height:1.2;text-decoration:none;cursor:pointer}.tool-button:hover,.tool-button:focus-visible{border-color:var(--accent);color:var(--accent);outline:2px solid #087e8333;outline-offset:2px}.share-tool{position:relative}.share-tool summary{list-style:none}.share-tool summary::-webkit-details-marker{display:none}.qr-panel{position:absolute;top:calc(100% + 8px);right:0;width:256px;padding:16px;display:grid;gap:10px;justify-items:center;border:1px solid var(--line);border-radius:10px;background:#fff;box-shadow:0 10px 28px #1b344026}.qr-panel img{display:block;width:160px;height:160px;background:#fff}.qr-panel p{margin:0;color:var(--muted);font-size:12px;text-align:center}.qr-download{color:#1769aa;font-size:12px;font-weight:600;text-decoration:underline;text-underline-offset:2px}@media(max-width:560px){.page-tools{width:100%;margin:16px auto 8px;padding:0 18px}.qr-panel{max-width:min(256px,calc(100vw - 36px))}}@media print{.page-tools{display:none!important}}</style>
 </head>
-<body>
+<body><div class="page-tools" role="group" aria-label="Resume actions">
+  <button class="tool-button" type="button" onclick="window.print()">Save as PDF</button>
+  <details class="share-tool">
+    <summary class="tool-button">Share CV</summary>
+    <div class="qr-panel">
+      <img src="./resume-qr.svg" alt="QR code that opens Antto Väätäinen’s CV">
+      <p>Scan to open my CV.</p>
+      <a class="qr-download" href="./resume-qr.svg" download="Antto-Vaatainen-CV-QR.svg">Download QR code</a>
+    </div>
+  </details>
+</div>
 <!-- Update resume content in resume.json. -->
 <div id="resume"></div>
 <script>
