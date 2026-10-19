@@ -9,4 +9,4 @@ The live resume is published at https://cudldev.github.io.
 3. Update the text inside the JSON values. Keep the quotation marks and commas in place.
 4. Commit the change to the `main` branch. GitHub Pages will publish the update automatically.
 
-The page layout and styling are in `index.html`. The page loads its content from `resume.json`.
+The page layout and styling are in `index.html`. The page loads its content from `resume.json`. Experience items can include an optional `url` field for the company website. Entries without a URL have no company link icon.
