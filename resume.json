@@ -1,0 +1,22 @@
+{
+  "name": "Antto Väätäinen",
+  "headline": "UI Technical Artist · Technical Artist · UI/UX",
+  "location": "Helsinki, Finland",
+  "summary": "UI Technical Artist specializing in UX/UI design, interaction design, and UI programming, with experience across AAA console, PC, and mobile games. I bridge design and engineering to deliver production-ready interfaces, with additional strengths in shaders, UI animation, and VFX.",
+  "contact": [
+    {"label": "Phone", "text": "+358 44 971 5030", "href": "tel:+358449715030"},
+    {"label": "Email", "text": "antto.vaatainen@gmail.com", "href": "mailto:antto.vaatainen@gmail.com"},
+    {"label": "ArtStation", "text": "cudl.artstation.com", "href": "https://cudl.artstation.com"},
+    {"label": "LinkedIn", "text": "linkedin.com/in/cudl", "href": "https://linkedin.com/in/cudl"}
+  ],
+  "coreSkills": ["UX/UI design", "Interaction design", "UI programming", "Shaders", "UI animation", "VFX"],
+  "tools": ["Unity", "Unreal Engine", "Figma", "Photoshop", "Blender", "Shaders", "HLSL", "C#", "Git", "Perforce", "Plastic SCM", "Art pipelines", "Particle effects"],
+  "experience": [
+    {"company":"BIT ODD","dates":"Apr 2025 – Present","role":"UI Technical Artist","paragraphs":["Working on Field Day, the latest game from Clash of Clans’ former Creative Director.","Turned concepts into production-ready game UI, owning layout, implementation, animation, and VFX. Built the UI systems in C# and rebuilt the UI framework from the ground up to support soft launch and future development."]},
+    {"company":"Northern Stars","dates":"Jan 2025 – Mar 2025","role":"Consultant UI Technical Artist","paragraphs":["Freelance UI Technical Artist on Ultimate Survivors during its soft launch and preparation for global launch. Supported UI implementation in Unity, including layouts, animation, VFX, and view model setup."]},
+    {"company":"Supercell","dates":"Sep 2024 – Dec 2024","role":"Technical Artist · Spark Program","paragraphs":["Collaborated on three game prototypes during Supercell’s Spark Program, developing each concept over a three-to-four-week cycle. Worked on UX and UI design, taking prototypes from initial design through full in-game implementation."]},
+    {"company":"Mainframe Industries","dates":"Oct 2022 – Aug 2024","role":"Senior Technical UI/UX Designer","paragraphs":["Worked on Pax Dei, an open-world sandbox MMORPG. Implemented UI features in Unreal Engine and contributed to UX design."]},
+    {"company":"Housemarque","dates":"Apr 2020 – Oct 2022","role":"Technical Artist","paragraphs":["Worked on Returnal, the BAFTA-winning PS5 game. Key contributions included Photo Mode, the minimap, and UI VFX.","Also supported Saros during pre-production, helping establish foundations and carry forward learnings from Returnal."]},
+    {"company":"Next Games","dates":"Feb 2017 – Mar 2020","role":"Technical Artist","paragraphs":["Worked on Blade Runner: Rogue, a mobile character-collection RPG based on the Blade Runner IP. The game soft-launched and later relaunched during my time at the studio."]}
+  ]
+}
