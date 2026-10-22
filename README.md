@@ -11,6 +11,6 @@ The live resume is published at https://cudldev.github.io.
 
 The page layout and styling are in `index.html`. The page loads its content from `resume.json`.
 
-Project entries can include a `name`, optional `dates`, `description`, `url` to the product page, `image` URL for the thumbnail, and optional `highlights`. Projects appear on the web page and are hidden in the PDF.
+Project entries can include a `name`, optional `dates`, `description`, `url` to the product page, `image` URL for the thumbnail, and optional `highlights`. Thumbnails display in a 16:10 crop. Projects appear on the web page and are hidden in the PDF.
 
 The **Save as PDF** button opens the browser print dialog; choose Save as PDF. **Share CV** opens the QR code, which links to the live page. You can download the QR as an SVG image.
