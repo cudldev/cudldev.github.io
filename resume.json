@@ -71,6 +71,14 @@
         "Reworked the shop visuals, giving the store a facelift.",
         "Implemented the Chain Offers and Hero Trigger Offers UI.",
         "Helped split and manage addressables to improve loading times."
+      ],
+      "platforms": [
+        {
+          "platform": "iOS",
+          "store": "App Store",
+          "icon": "appstore",
+          "url": "https://apps.apple.com/app/id6471319821"
+        }
       ]
     },
     {
@@ -83,6 +91,21 @@
         "Created widgets in Unreal Engine and built UI layouts.",
         "Developed UI materials and animations.",
         "Contributed to UI and UX design."
+      ],
+      "engine": "Unreal Engine 5",
+      "platforms": [
+        {
+          "platform": "PC",
+          "store": "Steam",
+          "icon": "steam",
+          "url": "https://store.steampowered.com/app/1995520/Pax_Dei/"
+        },
+        {
+          "platform": "PC",
+          "store": "Epic Games Store",
+          "icon": "epic",
+          "url": "https://store.epicgames.com/p/paxdei-0ee83f?lang=en-US"
+        }
       ]
     },
     {
@@ -94,6 +117,15 @@
       "highlights": [
         "Documented UX/UI decisions for Photo Mode, the minimap, and other features informed by Returnal.",
         "Researched new approaches to creating UI materials and shaders in Unreal Engine 5 using HLSL."
+      ],
+      "engine": "Unreal Engine 5",
+      "platforms": [
+        {
+          "platform": "PS5",
+          "store": "PlayStation Store",
+          "icon": "playstation",
+          "url": "https://store.playstation.com/en-us/concept/10005069/"
+        }
       ]
     },
     {
@@ -105,6 +137,27 @@
       "highlights": [
         "Worked on UI-related shaders and materials for the HUD, minimap visualization, and in-world holograms.",
         "Created photo mode filters and effects for post-launch."
+      ],
+      "engine": "Housemarque custom engine",
+      "platforms": [
+        {
+          "platform": "PS5",
+          "store": "PlayStation Store",
+          "icon": "playstation",
+          "url": "https://store.playstation.com/en-us/product/UP9000-PPSA01284_00-RETURNALGAME0001/"
+        },
+        {
+          "platform": "PC",
+          "store": "Steam",
+          "icon": "steam",
+          "url": "https://store.steampowered.com/app/1649240/Returnal/"
+        },
+        {
+          "platform": "PC",
+          "store": "Epic Games Store",
+          "icon": "epic",
+          "url": "https://store.epicgames.com/p/returnal"
+        }
       ]
     },
     {
@@ -116,6 +169,14 @@
       "highlights": [
         "Implemented art assets and created tools to automate and streamline production.",
         "Worked on UI implementation and animation, VFX, shaders, and performance optimization."
+      ],
+      "platforms": [
+        {
+          "platform": "iOS"
+        },
+        {
+          "platform": "Android"
+        }
       ]
     }
   ],
