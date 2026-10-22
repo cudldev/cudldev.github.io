@@ -50,27 +50,36 @@
   ],
   "projects": [
     {
-      "name": "Field Day",
-      "dates": "Apr 2025 – Present",
-      "url": "https://field-day.com/",
-      "image": "https://field-day.gg/field_day_thumbnail.jpg",
-      "description": "Worked on Field Day as a UI Technical Artist.",
+      "name": "Blade Runner Rogue",
+      "dates": "Jun 2017",
+      "url": "https://www.nextgames.com/articles/next-games-blade-runner-rogue-available-in-the-first-main-market",
+      "image": "https://www.nextgames.com/uploads/_1200x630_crop_center-center_82_none/BD-Key-Art.jpg?mtime=1645553254",
+      "description": "Contributed to the official mobile game based on the Blade Runner universe.",
       "highlights": [
-        "Implemented UI and created UI assets.",
-        "Designed UX flows and UI systems.",
-        "Created UI animation and VFX.",
-        "Optimized and scaled UI across devices."
+        "Implemented art assets and created tools to automate and streamline production.",
+        "Worked on UI implementation and animation, VFX, shaders, and performance optimization."
       ]
     },
     {
-      "name": "Ultimate Survivors",
-      "dates": "Jan 2025 – Mar 2025",
-      "image": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/6a/8a/7a/6a8a7a81-0062-59f3-d2f7-065730ab6ebb/AppIcon-1x_U007emarketing-0-7-0-85-220-0.png/1200x630wa.png",
-      "description": "Helped implement new UI features for the live game.",
+      "name": "Returnal",
+      "dates": "Apr 2020 – Mar 2022",
+      "url": "https://www.playstation.com/en-us/games/returnal/",
+      "image": "https://image.api.playstation.com/vulcan/ap/rnd/202011/1621/4ItSbqJE88H019Ua3WBQKLF8.png",
+      "description": "Housemarque’s third-person roguelite shooter for PS5.",
       "highlights": [
-        "Reworked the shop visuals, giving the store a facelift.",
-        "Implemented the Chain Offers and Hero Trigger Offers UI.",
-        "Helped split and manage addressables to improve loading times."
+        "Worked on UI-related shaders and materials for the HUD, minimap visualization, and in-world holograms.",
+        "Created photo mode filters and effects for post-launch."
+      ]
+    },
+    {
+      "name": "Saros",
+      "dates": "May 2022 – Sep 2022",
+      "url": "https://www.playstation.com/en-us/games/saros/",
+      "image": "https://image.api.playstation.com/vulcan/ap/rnd/202512/0120/29617d8e70b24ffa3f63508187fcc886f6696a69b413cdc5.jpg",
+      "description": "Supported Saros during pre-production at Housemarque.",
+      "highlights": [
+        "Documented UX/UI decisions for Photo Mode, the minimap, and other features informed by Returnal.",
+        "Researched new approaches to creating UI materials and shaders in Unreal Engine 5 using HLSL."
       ]
     },
     {
@@ -86,36 +95,27 @@
       ]
     },
     {
-      "name": "Saros",
-      "dates": "May 2022 – Sep 2022",
-      "url": "https://www.playstation.com/en-us/games/saros/",
-      "image": "https://image.api.playstation.com/vulcan/ap/rnd/202512/0120/29617d8e70b24ffa3f63508187fcc886f6696a69b413cdc5.jpg",
-      "description": "Supported Saros during pre-production at Housemarque.",
+      "name": "Ultimate Survivors",
+      "dates": "Jan 2025 – Mar 2025",
+      "image": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/6a/8a/7a/6a8a7a81-0062-59f3-d2f7-065730ab6ebb/AppIcon-1x_U007emarketing-0-7-0-85-220-0.png/1200x630wa.png",
+      "description": "Helped implement new UI features for the live game.",
       "highlights": [
-        "Documented UX/UI decisions for Photo Mode, the minimap, and other features informed by Returnal.",
-        "Researched new approaches to creating UI materials and shaders in Unreal Engine 5 using HLSL."
+        "Reworked the shop visuals, giving the store a facelift.",
+        "Implemented the Chain Offers and Hero Trigger Offers UI.",
+        "Helped split and manage addressables to improve loading times."
       ]
     },
     {
-      "name": "Returnal",
-      "dates": "Apr 2020 – Mar 2022",
-      "url": "https://www.playstation.com/en-us/games/returnal/",
-      "image": "https://image.api.playstation.com/vulcan/ap/rnd/202011/1621/4ItSbqJE88H019Ua3WBQKLF8.png",
-      "description": "Housemarque’s third-person roguelite shooter for PS5.",
+      "name": "Field Day",
+      "dates": "Apr 2025 – Present",
+      "url": "https://field-day.com/",
+      "image": "https://field-day.gg/field_day_thumbnail.jpg",
+      "description": "Worked on Field Day as a UI Technical Artist.",
       "highlights": [
-        "Worked on UI-related shaders and materials for the HUD, minimap visualization, and in-world holograms.",
-        "Created photo mode filters and effects for post-launch."
-      ]
-    },
-    {
-      "name": "Blade Runner Rogue",
-      "dates": "Jun 2017",
-      "url": "https://www.nextgames.com/articles/next-games-blade-runner-rogue-available-in-the-first-main-market",
-      "image": "https://www.nextgames.com/uploads/_1200x630_crop_center-center_82_none/BD-Key-Art.jpg?mtime=1645553254",
-      "description": "Contributed to the official mobile game based on the Blade Runner universe.",
-      "highlights": [
-        "Implemented art assets and created tools to automate and streamline production.",
-        "Worked on UI implementation and animation, VFX, shaders, and performance optimization."
+        "Implemented UI and created UI assets.",
+        "Designed UX flows and UI systems.",
+        "Created UI animation and VFX.",
+        "Optimized and scaled UI across devices."
       ]
     }
   ],
