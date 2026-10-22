@@ -35,9 +35,18 @@ body.simple-mode{color:var(--paper-ink);background:#eaf0f1;color-scheme:light}bo
 .type-char{opacity:1}.identity.is-typing .type-char{opacity:0}.identity.is-typing .type-char.is-visible{opacity:1}
 @media(prefers-reduced-motion:reduce){.warmup-once,.identity.is-typing .type-char{animation:none!important;opacity:1!important}}
 </style>
+
+<style>
+:root{--nav-height:78px}
+body.is-scrolled{--nav-height:76px}
+#page-vignette{position:fixed;inset:var(--nav-height) 0 0;z-index:10;pointer-events:none;background:radial-gradient(ellipse at center,transparent 48%,rgba(0,0,0,.25) 100%)}
+@media(max-width:760px){:root{--nav-height:66px}body.is-scrolled{--nav-height:64px}}
+@media print{#page-vignette{display:none!important}}
+</style>
 </head>
 <body>
 <div id="ambient" aria-hidden="true"></div>
+<div id="page-vignette" aria-hidden="true"></div>
 <div class="top-row site-nav">
   <div class="header-inner">
     <div class="micro-brand">ANTTO VÄÄTÄINEN<br>UI SYSTEMS / 01</div>
@@ -235,6 +244,3 @@ const setMode=simple=>{document.body.classList.toggle('simple-mode',simple);mode
 </script>
 </body>
 </html>
-
-
-
