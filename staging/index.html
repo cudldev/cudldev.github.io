@@ -136,16 +136,42 @@ const ambient=$('#ambient');
   function prepareSimpleFrame(){try{const doc=simpleFrame.contentDocument;if(!doc)return;let style=doc.getElementById('staging-embed-overrides');if(!style){style=doc.createElement('style');style.id='staging-embed-overrides';style.textContent='.page-tools{display:none!important}';doc.head.append(style);}}catch(error){console.warn('Could not prepare simple CV frame',error);}}
   function resizeSimpleFrame(){prepareSimpleFrame();try{const doc=simpleFrame.contentDocument;if(!doc)return;const height=Math.max(doc.documentElement.scrollHeight,doc.body?.scrollHeight||0);if(height>0&&simpleFrame.style.height!==height+'px')simpleFrame.style.height=height+'px';}catch(error){console.warn('Could not measure simple CV frame',error);}}
   simpleFrame.addEventListener('load',()=>{resizeSimpleFrame();try{const doc=simpleFrame.contentDocument;new ResizeObserver(resizeSimpleFrame).observe(doc.documentElement);doc.querySelectorAll('img').forEach(img=>img.addEventListener('load',resizeSimpleFrame));}catch(error){console.warn('Could not observe simple CV frame',error);}});
-modeButtons.forEach(button=>button.addEventListener('click',()=>{
-    const simple=button.dataset.mode==='simple';if(simple===document.body.classList.contains('simple-mode')||document.body.classList.contains('is-transitioning'))return;
-    if(matchMedia('(prefers-reduced-motion: reduce)').matches){setMode(simple);return;}
-    modeButtons.forEach(other=>other.setAttribute('aria-pressed',String((other.dataset.mode==='simple')===simple)));
-    document.body.classList.add('is-transitioning','sweep-cover');
-    setTimeout(()=>{
-      if(!document.body.classList.contains('sweep-cover'))return;
-      setMode(simple);document.body.classList.remove('sweep-cover');document.body.classList.add('sweep-reveal');
-      setTimeout(()=>document.body.classList.remove('sweep-reveal','is-transitioning'),450);
-    },450);
+  let sweepAnimation=null,transitionTarget=null;
+  const sweep=$('#mode-sweep');
+  const currentSimple=()=>document.body.classList.contains('simple-mode');
+  const updateModeButtons=simple=>modeButtons.forEach(other=>other.setAttribute('aria-pressed',String((other.dataset.mode==='simple')===simple)));
+  function finishSweep(){
+    if(!sweepAnimation)return;
+    const duration=sweepAnimation.effect.getTiming().duration;
+    if(sweepAnimation.currentTime>=duration-1){
+      if(transitionTarget!==currentSimple())setMode(transitionTarget);
+      sweepAnimation.reverse();
+      return;
+    }
+    if(transitionTarget!==currentSimple()){
+      sweepAnimation.reverse();
+      return;
+    }
+    sweepAnimation.cancel();sweepAnimation=null;transitionTarget=null;
+    document.body.classList.remove('is-transitioning');
+    updateModeButtons(currentSimple());
+  }
+  modeButtons.forEach(button=>button.addEventListener('click',()=>{
+    const simple=button.dataset.mode==='simple';
+    if(matchMedia('(prefers-reduced-motion: reduce)').matches){setMode(simple);updateModeButtons(simple);return;}
+    if(!sweepAnimation){
+      if(simple===currentSimple())return;
+      transitionTarget=simple;updateModeButtons(simple);
+      document.body.classList.add('is-transitioning');
+      sweepAnimation=sweep.animate([{opacity:0},{opacity:1}],{duration:450,easing:'ease-in-out',fill:'both'});
+      sweepAnimation.onfinish=finishSweep;
+      return;
+    }
+    if(simple===transitionTarget)return;
+    transitionTarget=simple;updateModeButtons(simple);
+    const wantsCover=simple!==currentSimple();
+    if(wantsCover&&sweepAnimation.playbackRate<0)sweepAnimation.reverse();
+    else if(!wantsCover&&sweepAnimation.playbackRate>0)sweepAnimation.reverse();
   }));
   const onScroll=()=>{if(window.scrollY>105)document.body.classList.add('is-scrolled');else if(window.scrollY<60)document.body.classList.remove('is-scrolled');};
   window.addEventListener('scroll',onScroll,{passive:true});onScroll();
