@@ -105,7 +105,7 @@ body.simple-mode{color:var(--paper-ink);background:#eaf0f1;color-scheme:light}bo
       }
       const y=element.getBoundingClientRect().top+window.scrollY,delay=Math.min(700,Math.max(0,(y-identityTop)/viewport*700)),characters=[...element.querySelectorAll('.type-char')];
       characters.forEach(character=>{character.classList.remove('is-visible');});
-      jobs.push({characters,delay,duration:characters.length>1?1400:0,revealed:0});
+      jobs.push({characters,delay,duration:characters.length>1?Math.min(1400,Math.max(160,characters.length*28)):0,revealed:0});
     });
     clearTimeout(typewriterTimer);cancelAnimationFrame(typewriterFrame);
     identity.classList.remove('is-typing');void identity.offsetWidth;identity.classList.add('is-typing');
