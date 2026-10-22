@@ -54,10 +54,12 @@
       "dates": "Apr 2025 – Present",
       "url": "https://field-day.com/",
       "image": "https://field-day.gg/field_day_thumbnail.jpg",
-      "description": "BIT ODD’s PvPvE mobile action game.",
+      "description": "Worked on Field Day as a UI Technical Artist.",
       "highlights": [
-        "Turned concepts into production-ready UI layouts, animation, and VFX.",
-        "Built UI systems in C# and rebuilt the framework to support soft launch and future development."
+        "Implemented UI and created UI assets.",
+        "Designed UX flows and UI systems.",
+        "Created UI animation and VFX.",
+        "Optimized and scaled UI across devices."
       ]
     },
     {
@@ -96,11 +98,13 @@
     },
     {
       "name": "Saros",
+      "dates": "May 2022 – Sep 2022",
       "url": "https://www.playstation.com/en-us/games/saros/",
       "image": "https://image.api.playstation.com/vulcan/ap/rnd/202512/0120/29617d8e70b24ffa3f63508187fcc886f6696a69b413cdc5.jpg",
-      "description": "Housemarque’s PS5 action game.",
+      "description": "Supported Saros during pre-production at Housemarque.",
       "highlights": [
-        "Supported the game during pre-production, helping establish foundations and carry forward learnings from Returnal."
+        "Documented UX/UI decisions for Photo Mode, the minimap, and other features informed by Returnal.",
+        "Researched new approaches to creating UI materials and shaders in Unreal Engine 5 using HLSL."
       ]
     },
     {
