@@ -86,17 +86,6 @@
       ]
     },
     {
-      "name": "Returnal",
-      "dates": "Apr 2020 – Mar 2022",
-      "url": "https://www.playstation.com/en-us/games/returnal/",
-      "image": "https://image.api.playstation.com/vulcan/ap/rnd/202011/1621/4ItSbqJE88H019Ua3WBQKLF8.png",
-      "description": "Housemarque’s third-person roguelite shooter for PS5.",
-      "highlights": [
-        "Worked on UI-related shaders and materials for the HUD, minimap visualization, and in-world holograms.",
-        "Created photo mode filters and effects for post-launch."
-      ]
-    },
-    {
       "name": "Saros",
       "dates": "May 2022 – Sep 2022",
       "url": "https://www.playstation.com/en-us/games/saros/",
@@ -105,6 +94,17 @@
       "highlights": [
         "Documented UX/UI decisions for Photo Mode, the minimap, and other features informed by Returnal.",
         "Researched new approaches to creating UI materials and shaders in Unreal Engine 5 using HLSL."
+      ]
+    },
+    {
+      "name": "Returnal",
+      "dates": "Apr 2020 – Mar 2022",
+      "url": "https://www.playstation.com/en-us/games/returnal/",
+      "image": "https://image.api.playstation.com/vulcan/ap/rnd/202011/1621/4ItSbqJE88H019Ua3WBQKLF8.png",
+      "description": "Housemarque’s third-person roguelite shooter for PS5.",
+      "highlights": [
+        "Worked on UI-related shaders and materials for the HUD, minimap visualization, and in-world holograms.",
+        "Created photo mode filters and effects for post-launch."
       ]
     },
     {
