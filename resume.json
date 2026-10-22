@@ -60,7 +60,8 @@
         "Designed UX flows and UI systems.",
         "Created UI animation and VFX.",
         "Optimized and scaled UI across devices."
-      ]
+      ],
+      "engine": "Unity"
     },
     {
       "name": "Ultimate Survivors",
@@ -138,7 +139,7 @@
         "Worked on UI-related shaders and materials for the HUD, minimap visualization, and in-world holograms.",
         "Created photo mode filters and effects for post-launch."
       ],
-      "engine": "Housemarque custom engine",
+      "engine": "Unreal Engine",
       "platforms": [
         {
           "platform": "PS5",
