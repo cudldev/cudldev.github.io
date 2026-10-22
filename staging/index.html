@@ -177,7 +177,7 @@ const ambient=$('#ambient');
       sweep.style.setProperty('--wipe-progress','-8%');
       document.body.classList.remove('is-revealing');
       document.body.classList.add('is-transitioning');
-      sweepAnimation=sweep.animate([{'--wipe-progress':'-8%',offset:0},{'--wipe-progress':'108%',offset:.5},{'--wipe-progress':'-8%',offset:.5},{'--wipe-progress':'108%',offset:1}],{duration:700,easing:'linear',fill:'both'});
+      sweepAnimation=sweep.animate([{'--wipe-progress':'-8%',offset:0},{'--wipe-progress':'108%',offset:.5},{'--wipe-progress':'-8%',offset:.5},{'--wipe-progress':'108%',offset:1}],{duration:460,easing:'linear',fill:'both'});
       sweepAnimation.onfinish=finishSweep;
       sweepFrame=requestAnimationFrame(syncSweepMode);
       return;
