@@ -96,10 +96,12 @@ const setMode=simple=>{document.body.classList.toggle('simple-mode',simple);mode
 modeButtons.forEach(button=>button.addEventListener('click',()=>{
     const simple=button.dataset.mode==='simple';if(simple===document.body.classList.contains('simple-mode')||document.body.classList.contains('is-transitioning'))return;
     if(matchMedia('(prefers-reduced-motion: reduce)').matches){setMode(simple);return;}
-    const overlay=$('#mode-sweep');document.body.classList.add('is-transitioning','sweep-cover');
-    const reveal=event=>{if(event.target!==overlay)return;overlay.removeEventListener('animationend',reveal);document.body.classList.remove('sweep-reveal','is-transitioning');};
-    const cover=event=>{if(event.target!==overlay)return;overlay.removeEventListener('animationend',cover);setMode(simple);document.body.classList.remove('sweep-cover');document.body.classList.add('sweep-reveal');overlay.addEventListener('animationend',reveal);};
-    overlay.addEventListener('animationend',cover);
+    document.body.classList.add('is-transitioning','sweep-cover');
+    setTimeout(()=>{
+      if(!document.body.classList.contains('sweep-cover'))return;
+      setMode(simple);document.body.classList.remove('sweep-cover');document.body.classList.add('sweep-reveal');
+      setTimeout(()=>document.body.classList.remove('sweep-reveal','is-transitioning'),450);
+    },340);
   }));
   const onScroll=()=>{if(window.scrollY>105)document.body.classList.add('is-scrolled');else if(window.scrollY<60)document.body.classList.remove('is-scrolled');};
   window.addEventListener('scroll',onScroll,{passive:true});onScroll();
