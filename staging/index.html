@@ -136,22 +136,30 @@ const ambient=$('#ambient');
   function prepareSimpleFrame(){try{const doc=simpleFrame.contentDocument;if(!doc)return;let style=doc.getElementById('staging-embed-overrides');if(!style){style=doc.createElement('style');style.id='staging-embed-overrides';style.textContent='.page-tools{display:none!important}';doc.head.append(style);}}catch(error){console.warn('Could not prepare simple CV frame',error);}}
   function resizeSimpleFrame(){prepareSimpleFrame();try{const doc=simpleFrame.contentDocument;if(!doc)return;const height=Math.max(doc.documentElement.scrollHeight,doc.body?.scrollHeight||0);if(height>0&&simpleFrame.style.height!==height+'px')simpleFrame.style.height=height+'px';}catch(error){console.warn('Could not measure simple CV frame',error);}}
   simpleFrame.addEventListener('load',()=>{resizeSimpleFrame();try{const doc=simpleFrame.contentDocument;new ResizeObserver(resizeSimpleFrame).observe(doc.documentElement);doc.querySelectorAll('img').forEach(img=>img.addEventListener('load',resizeSimpleFrame));}catch(error){console.warn('Could not observe simple CV frame',error);}});
-  let sweepAnimation=null,transitionTarget=null;
+  let sweepAnimation=null,transitionTarget=null,transitionFromSimple=false,sweepFrame=0;
   const sweep=$('#mode-sweep');
   const currentSimple=()=>document.body.classList.contains('simple-mode');
   const updateModeButtons=simple=>modeButtons.forEach(other=>other.setAttribute('aria-pressed',String((other.dataset.mode==='simple')===simple)));
+  function syncSweepMode(){
+    if(!sweepAnimation)return;
+    const midpoint=sweepAnimation.effect.getTiming().duration/2;
+    const covered=(sweepAnimation.currentTime||0)>=midpoint;
+    const expected=covered?transitionTarget:transitionFromSimple;
+    if(expected!==currentSimple())setMode(expected);
+    if(sweepAnimation.playState==='running')sweepFrame=requestAnimationFrame(syncSweepMode);
+  }
   function finishSweep(){
     if(!sweepAnimation)return;
     const duration=sweepAnimation.effect.getTiming().duration;
-    if(sweepAnimation.currentTime>=duration-1){
-      if(transitionTarget!==currentSimple())setMode(transitionTarget);
+    const atEnd=sweepAnimation.currentTime>=duration-1;
+    const expected=atEnd?transitionTarget:transitionFromSimple;
+    if(expected!==currentSimple())setMode(expected);
+    if(atEnd!==(transitionTarget!==transitionFromSimple)){
       sweepAnimation.reverse();
+      sweepFrame=requestAnimationFrame(syncSweepMode);
       return;
     }
-    if(transitionTarget!==currentSimple()){
-      sweepAnimation.reverse();
-      return;
-    }
+    cancelAnimationFrame(sweepFrame);
     sweepAnimation.cancel();sweepAnimation=null;transitionTarget=null;
     document.body.classList.remove('is-transitioning');
     updateModeButtons(currentSimple());
@@ -161,17 +169,21 @@ const ambient=$('#ambient');
     if(matchMedia('(prefers-reduced-motion: reduce)').matches){setMode(simple);updateModeButtons(simple);return;}
     if(!sweepAnimation){
       if(simple===currentSimple())return;
-      transitionTarget=simple;updateModeButtons(simple);
+      transitionFromSimple=currentSimple();transitionTarget=simple;updateModeButtons(simple);
       document.body.classList.add('is-transitioning');
-      sweepAnimation=sweep.animate([{clipPath:'inset(0 100% 0 0)'},{clipPath:'inset(0 0 0 0)'}],{duration:320,easing:'cubic-bezier(.7,0,.2,1)',fill:'both'});
+      const start=simple?'inset(0 100% 0 0)':'inset(0 0 0 100%)';
+      const end=simple?'inset(0 0 0 100%)':'inset(0 100% 0 0)';
+      sweepAnimation=sweep.animate([{clipPath:start,offset:0},{clipPath:'inset(0)',offset:.5},{clipPath:'inset(0)',offset:.5},{clipPath:end,offset:1}],{duration:460,easing:'linear',fill:'both'});
       sweepAnimation.onfinish=finishSweep;
+      sweepFrame=requestAnimationFrame(syncSweepMode);
       return;
     }
     if(simple===transitionTarget)return;
     transitionTarget=simple;updateModeButtons(simple);
-    const wantsCover=simple!==currentSimple();
-    if(wantsCover&&sweepAnimation.playbackRate<0)sweepAnimation.reverse();
-    else if(!wantsCover&&sweepAnimation.playbackRate>0)sweepAnimation.reverse();
+    const shouldFinishAtEnd=simple!==transitionFromSimple;
+    const movingToEnd=sweepAnimation.playbackRate>0;
+    if(shouldFinishAtEnd!==movingToEnd)sweepAnimation.reverse();
+    cancelAnimationFrame(sweepFrame);sweepFrame=requestAnimationFrame(syncSweepMode);
   }));
   const onScroll=()=>{if(window.scrollY>105)document.body.classList.add('is-scrolled');else if(window.scrollY<60)document.body.classList.remove('is-scrolled');};
   window.addEventListener('scroll',onScroll,{passive:true});onScroll();
