@@ -20,9 +20,8 @@ body.simple-mode{color:var(--paper-ink);background:#eaf0f1;color-scheme:light}bo
 @media print{html,body{background:white!important;color:#192b3a!important}#ambient,.site-nav,#portfolio-view,.site-footer,.print-hide,#mode-sweep{display:none!important}body.simple-mode #simple-view{display:block!important}#simple-frame{height:100vh;min-height:100vh}.site-header{display:block!important;position:static;min-height:0;padding:0 12mm;background:white!important;backdrop-filter:none;box-shadow:none;border:0}.site-header .top-row{display:none}.site-header .identity{display:block;max-height:none!important;opacity:1!important;transform:none!important;overflow:visible!important;padding:12mm 0 8mm}.site-header .identity h1{font-size:28pt;color:#192b3a}.site-header .identity .role{color:#087e83}.site-header .identity .summary{font-size:10pt;color:#344957}.site-header .identity .location{color:#526673}.site-header .header-rule{display:none}main{max-width:none;padding:0 12mm;margin:0}.section{padding:10mm 0 0}.section-heading{border-color:#cdd8dc}.section-heading h2,.skills-block h3{color:#087e83}.experience{grid-template-columns:1.5fr .7fr;gap:10mm}.job,.project{break-inside:avoid}.job p,.project p{color:#344957}.timeline{border-color:#cbd8dc}.job:before{box-shadow:none;background:white}a{color:#1769aa}.skill{background:white;border-color:#d3dee1;color:#344957}body.simple-mode #ambient{display:none}}
 </style>
 <style>
-.identity.is-typing .type-char{opacity:0;animation:typewriter-char .014s steps(1,end) forwards}
-@keyframes typewriter-char{to{opacity:1}}
-@media(prefers-reduced-motion:reduce){.identity.is-typing .type-char{animation:none!important;opacity:1}}
+.type-char{opacity:1}.identity.is-typing .type-char{opacity:0}.identity.is-typing .type-char.is-visible{opacity:1}
+@media(prefers-reduced-motion:reduce){.identity.is-typing .type-char{opacity:1!important}}
 </style>
 </head>
 <body>
@@ -96,25 +95,39 @@ body.simple-mode{color:var(--paper-ink);background:#eaf0f1;color-scheme:light}bo
   function playIntroTypewriter(){
     const identity=$('#identity'),targets=[...identity.querySelectorAll('.eyebrow,h1,.role,.summary,.location,.focus')];
     if(matchMedia('(prefers-reduced-motion: reduce)').matches){finishIntroTypewriter();return;}
-    const identityTop=identity.getBoundingClientRect().top+window.scrollY,viewport=Math.max(window.innerHeight,1);
+    const identityTop=identity.getBoundingClientRect().top+window.scrollY,viewport=Math.max(window.innerHeight,1),jobs=[];
     targets.forEach(element=>{
       if(!element.dataset.typewriterReady){
-        const fullText=element.textContent; element.setAttribute('aria-label',fullText);
+        const fullText=element.textContent;element.setAttribute('aria-label',fullText);
         const walker=document.createTreeWalker(element,NodeFilter.SHOW_TEXT),nodes=[];while(walker.nextNode())nodes.push(walker.currentNode);
         nodes.forEach(node=>{const fragment=document.createDocumentFragment();Array.from(node.nodeValue).forEach(character=>{const span=el('span','type-char',character);span.setAttribute('aria-hidden','true');fragment.append(span);});node.parentNode.replaceChild(fragment,node);});
         element.dataset.typewriterReady='true';
       }
-      const y=element.getBoundingClientRect().top+window.scrollY,delay=Math.min(700,Math.max(0,(y-identityTop)/viewport*700));
-      const characters=[...element.querySelectorAll('.type-char')],interval=characters.length>1?Math.min(14,1400/(characters.length-1)):0;characters.forEach((character,index)=>{character.style.opacity='';character.style.animation='';character.style.animationDelay=(delay+index*interval)+'ms';});
+      const y=element.getBoundingClientRect().top+window.scrollY,delay=Math.min(700,Math.max(0,(y-identityTop)/viewport*700)),characters=[...element.querySelectorAll('.type-char')];
+      characters.forEach(character=>{character.classList.remove('is-visible');});
+      jobs.push({characters,delay,duration:characters.length>1?1400:0,revealed:0});
     });
+    clearTimeout(typewriterTimer);cancelAnimationFrame(typewriterFrame);
     identity.classList.remove('is-typing');void identity.offsetWidth;identity.classList.add('is-typing');
-    clearTimeout(typewriterTimer);
-    const spans=[...identity.querySelectorAll('.type-char')],last=spans.reduce((maximum,character)=>Math.max(maximum,parseFloat(character.style.animationDelay)||0),0);
-    typewriterTimer=setTimeout(finishIntroTypewriter,last+1000);
+    const started=performance.now();
+    const revealFrame=now=>{
+      let complete=true;
+      jobs.forEach(job=>{
+        const elapsed=now-started-job.delay;
+        if(elapsed<0){complete=false;return;}
+        const count=job.duration?Math.min(job.characters.length,Math.floor(elapsed/job.duration*(job.characters.length-1))+1):job.characters.length;
+        while(job.revealed<count){job.characters[job.revealed].classList.add('is-visible');job.revealed++;}
+        if(job.revealed<job.characters.length)complete=false;
+      });
+      if(complete)finishIntroTypewriter();else typewriterFrame=requestAnimationFrame(revealFrame);
+    };
+    typewriterFrame=requestAnimationFrame(revealFrame);
+    typewriterTimer=setTimeout(finishIntroTypewriter,2200);
   }
-  let typewriterTimer=0;
-  function finishIntroTypewriter(){const identity=$('#identity');if(!identity)return;clearTimeout(typewriterTimer);identity.classList.remove('is-typing');identity.querySelectorAll('.type-char').forEach(character=>{character.style.opacity='1';character.style.animation='none';});}
+  let typewriterTimer=0,typewriterFrame=0;
+  function finishIntroTypewriter(){const identity=$('#identity');if(!identity)return;clearTimeout(typewriterTimer);cancelAnimationFrame(typewriterFrame);identity.classList.remove('is-typing');identity.querySelectorAll('.type-char').forEach(character=>{character.classList.add('is-visible');});}
   window.addEventListener('scroll',()=>{if($('#identity')?.classList.contains('is-typing'))finishIntroTypewriter();},{passive:true});
+  document.addEventListener('visibilitychange',()=>{if(document.hidden&&$('#identity')?.classList.contains('is-typing'))finishIntroTypewriter();});
   const modeButtons=[...document.querySelectorAll('[data-mode]')];
 const ambient=$('#ambient');
   const focusAmbientGrid=()=>{ambient.classList.remove('grid-focus');void ambient.offsetWidth;ambient.classList.add('grid-focus');setTimeout(()=>ambient.classList.remove('grid-focus'),1800);};
