@@ -206,14 +206,14 @@ const setMode=simple=>{document.body.classList.toggle('simple-mode',simple);mode
       const x1=Math.max(0,offset-height),y1=offset-x1,x2=Math.min(width,offset),y2=offset-x2,length=Math.hypot(x2-x1,y2-y1);
       if(length===0)continue;
       const line=document.createElementNS('http://www.w3.org/2000/svg','line');
-      line.setAttribute('x1',x1);line.setAttribute('y1',y1);line.setAttribute('x2',x2);line.setAttribute('y2',y2);line.setAttribute('stroke',stripeIndex++%2?'#24434a':'#10252c');line.setAttribute('stroke-width','29');line.setAttribute('stroke-opacity','.76');line.setAttribute('stroke-linecap','butt');line.style.strokeDasharray=length;line.style.strokeDashoffset=length;svg.append(line);
+      line.setAttribute('x1',x1);line.setAttribute('y1',y1);line.setAttribute('x2',x2);line.setAttribute('y2',y2);line.setAttribute('stroke',stripeIndex++%2?'#24434a':'#10252c');line.setAttribute('stroke-width','0');line.setAttribute('stroke-opacity','.76');line.setAttribute('stroke-linecap','butt');svg.append(line);
       sweepLines.push({line,length,centerX:offset-height/2});
     }
     sweep.replaceChildren(svg);
   }
   function drawSweep(progress,revealing){
     const width=window.innerWidth,height=window.innerHeight,step=28*Math.SQRT2,start=-height/2-step/2,travel=width+height+step,reversed=transitionFromSimple,sweepX=reversed?width-start-progress*travel:start+progress*travel;
-    sweepLines.forEach(({line,length,centerX})=>{const stripeStart=centerX-step/2,stripeEnd=centerX+step/2,filled=Math.max(0,Math.min(1,reversed?(stripeEnd-sweepX)/step:(sweepX-stripeStart)/step)),visible=revealing?1-filled:filled;line.style.strokeDashoffset=(length*(1-visible)).toFixed(2);});
+    sweepLines.forEach(({line,centerX})=>{const stripeStart=centerX-step/2,stripeEnd=centerX+step/2,filled=Math.max(0,Math.min(1,reversed?(stripeEnd-sweepX)/step:(sweepX-stripeStart)/step)),visible=revealing?1-filled:filled;line.setAttribute('stroke-width',(29*visible).toFixed(2));});
   }
   const currentSimple=()=>document.body.classList.contains('simple-mode');
   const updateModeButtons=simple=>modeButtons.forEach(other=>other.setAttribute('aria-pressed',String((other.dataset.mode==='simple')===simple)));
