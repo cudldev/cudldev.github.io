@@ -236,7 +236,7 @@ const setMode=simple=>{document.body.classList.toggle('simple-mode',simple);mode
       sweep.style.setProperty('--wipe-progress','-8%');
       document.body.classList.remove('is-revealing');
       document.body.classList.add('is-transitioning');
-      sweepAnimation=sweep.animate([{'--wipe-progress':'-8%','--stripe-fill':'0px',offset:0},{'--wipe-progress':'108%','--stripe-fill':'28px',offset:.5},{'--wipe-progress':'-8%','--stripe-fill':'28px',offset:.5},{'--wipe-progress':'108%','--stripe-fill':'0px',offset:1}],{duration:620,easing:'linear',fill:'both'});
+      sweepAnimation=sweep.animate([{'--wipe-progress':'-20%','--stripe-fill':'0px',offset:0},{'--wipe-progress':'120%','--stripe-fill':'28px',offset:.5},{'--wipe-progress':'-20%','--stripe-fill':'28px',offset:.5},{'--wipe-progress':'120%','--stripe-fill':'0px',offset:1}],{duration:620,easing:'linear',fill:'both'});
       sweepAnimation.onfinish=finishSweep;
       sweepFrame=requestAnimationFrame(syncSweepMode);
       return;
