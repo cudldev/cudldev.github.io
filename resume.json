@@ -52,19 +52,23 @@
     {
       "name": "Ultimate Survivors",
       "dates": "Jan 2025 – Mar 2025",
-      "description": "Supported the live mobile game with UI implementation and improvements.",
+      "url": "https://ultimatesurvivors.com/",
+      "image": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/6a/8a/7a/6a8a7a81-0062-59f3-d2f7-065730ab6ebb/AppIcon-1x_U007emarketing-0-7-0-85-220-0.png/1200x630wa.png",
+      "description": "Helped implement new UI features for the live game.",
       "highlights": [
-        "Reworked the shop visuals.",
-        "Implemented Chain Offers and Hero Trigger Offers UI.",
+        "Reworked the shop visuals, giving the store a facelift.",
+        "Implemented the Chain Offers and Hero Trigger Offers UI.",
         "Helped split and manage addressables to improve loading times."
       ]
     },
     {
       "name": "Pax Dei",
       "dates": "Oct 2022 – Aug 2024",
-      "description": "Worked on UI for Mainframe Industries’ sandbox MMORPG.",
+      "url": "https://playpaxdei.com/en-us/",
+      "image": "https://d3tyjtqxpxwenc.cloudfront.net/uRpNp6/base_game_574399386d.jpg",
+      "description": "Sandbox MMORPG by Mainframe Industries.",
       "highlights": [
-        "Created Unreal Engine widgets and UI layouts.",
+        "Created widgets in Unreal Engine and built UI layouts.",
         "Developed UI materials and animations.",
         "Contributed to UI and UX design."
       ]
@@ -72,32 +76,24 @@
     {
       "name": "Returnal",
       "dates": "Apr 2020 – Mar 2022",
-      "description": "Worked on UI visuals for Housemarque’s third-person roguelite shooter for PS5.",
+      "url": "https://www.playstation.com/en-us/games/returnal/",
+      "image": "https://image.api.playstation.com/vulcan/ap/rnd/202011/1621/4ItSbqJE88H019Ua3WBQKLF8.png",
+      "description": "Housemarque’s third-person roguelite shooter for PS5.",
       "highlights": [
-        "Created UI shaders and materials for the HUD and minimap visualization.",
-        "Worked on in-world holograms, photo mode filters, and post-launch effects."
+        "Worked on UI-related shaders and materials for the HUD, minimap visualization, and in-world holograms.",
+        "Created photo mode filters and effects for post-launch."
       ]
     },
     {
-      "name": "Blade Runner: Rogue",
-      "dates": "2017–2020",
+      "name": "Blade Runner Rogue",
+      "dates": "Jun 2017",
+      "url": "https://www.nextgames.com/articles/next-games-blade-runner-rogue-available-in-the-first-main-market",
+      "image": "https://www.nextgames.com/uploads/_1200x630_crop_center-center_82_none/BD-Key-Art.jpg?mtime=1645553254",
       "description": "Contributed to the official mobile game based on the Blade Runner universe.",
       "highlights": [
-        "Implemented art assets and built tools to automate production tasks.",
+        "Implemented art assets and created tools to automate and streamline production.",
         "Worked on UI implementation and animation, VFX, shaders, and performance optimization."
       ]
-    },
-    {
-      "name": "The Rise of Chubtan",
-      "description": "A fast-paced arena brawler where players activate hazards and use attacks to hinder their opponent.",
-      "highlights": [
-        "Designed around changing arenas, varied mechanics, and a handicap system for balanced play."
-      ]
-    },
-    {
-      "name": "Spamketing",
-      "dates": "Sep 2015 – Oct 2015",
-      "description": "A Unity mobile game about marketing an indie game: create daily posts to attract fans, subscribers, and contacts."
     }
   ],
   "experience": [
