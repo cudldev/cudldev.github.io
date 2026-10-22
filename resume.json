@@ -50,9 +50,19 @@
   ],
   "projects": [
     {
+      "name": "Field Day",
+      "dates": "Apr 2025 – Present",
+      "url": "https://field-day.com/",
+      "image": "https://field-day.gg/field_day_thumbnail.jpg",
+      "description": "BIT ODD’s PvPvE mobile action game.",
+      "highlights": [
+        "Turned concepts into production-ready UI layouts, animation, and VFX.",
+        "Built UI systems in C# and rebuilt the framework to support soft launch and future development."
+      ]
+    },
+    {
       "name": "Ultimate Survivors",
       "dates": "Jan 2025 – Mar 2025",
-      "url": "https://ultimatesurvivors.com/",
       "image": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/6a/8a/7a/6a8a7a81-0062-59f3-d2f7-065730ab6ebb/AppIcon-1x_U007emarketing-0-7-0-85-220-0.png/1200x630wa.png",
       "description": "Helped implement new UI features for the live game.",
       "highlights": [
@@ -82,6 +92,15 @@
       "highlights": [
         "Worked on UI-related shaders and materials for the HUD, minimap visualization, and in-world holograms.",
         "Created photo mode filters and effects for post-launch."
+      ]
+    },
+    {
+      "name": "Saros",
+      "url": "https://www.playstation.com/en-us/games/saros/",
+      "image": "https://image.api.playstation.com/vulcan/ap/rnd/202512/0120/29617d8e70b24ffa3f63508187fcc886f6696a69b413cdc5.jpg",
+      "description": "Housemarque’s PS5 action game.",
+      "highlights": [
+        "Supported the game during pre-production, helping establish foundations and carry forward learnings from Returnal."
       ]
     },
     {
