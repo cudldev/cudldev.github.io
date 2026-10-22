@@ -136,20 +136,7 @@ const ambient=$('#ambient');
   function prepareSimpleFrame(){try{const doc=simpleFrame.contentDocument;if(!doc)return;let style=doc.getElementById('staging-embed-overrides');if(!style){style=doc.createElement('style');style.id='staging-embed-overrides';style.textContent='.page-tools{display:none!important}';doc.head.append(style);}}catch(error){console.warn('Could not prepare simple CV frame',error);}}
   function resizeSimpleFrame(){prepareSimpleFrame();try{const doc=simpleFrame.contentDocument;if(!doc)return;const height=Math.max(doc.documentElement.scrollHeight,doc.body?.scrollHeight||0);if(height>0&&simpleFrame.style.height!==height+'px')simpleFrame.style.height=height+'px';}catch(error){console.warn('Could not measure simple CV frame',error);}}
   simpleFrame.addEventListener('load',()=>{resizeSimpleFrame();try{const doc=simpleFrame.contentDocument;new ResizeObserver(resizeSimpleFrame).observe(doc.documentElement);doc.querySelectorAll('img').forEach(img=>img.addEventListener('load',resizeSimpleFrame));}catch(error){console.warn('Could not observe simple CV frame',error);}});
-modeButtons.forEach(button=>button.addEventListener('click',()=>{
-    const simple=button.dataset.mode==='simple';if(simple===document.body.classList.contains('simple-mode')||document.body.classList.contains('is-transitioning'))return;
-    if(matchMedia('(prefers-reduced-motion: reduce)').matches){setMode(simple);return;}
-    modeButtons.forEach(other=>other.setAttribute('aria-pressed',String((other.dataset.mode==='simple')===simple)));
-    document.body.classList.add('is-transitioning','sweep-cover');
-    setTimeout(()=>{
-      if(!document.body.classList.contains('sweep-cover'))return;
-      setMode(simple);document.body.classList.remove('sweep-cover');document.body.classList.add('sweep-reveal');      setTimeout(()=>document.body.classList.remove('sweep-reveal','is-transitioning'),450);    
 
-    #simple-frame{display:block;width:100%;height:100vh;min-height:100vh;border:0;background:#eaf0f1}#mode-sweep{position:fixed;top:78px;right:0;bottom:0;left:0;z-index:100;pointer-events:none;opacity:0;clip-path:none!important;background:repeating-linear-gradient(135deg,#05090d 0 12px,#102128 12px 40px)}#mode-sweep::after{display:none!important}body.is-scrolled #mode-sweep{top:76px}@media(max-width:760px){#mode-sweep{top:66px}body.is-scrolled #mode-sweep{top:64px}}body.sweep-cover #mode-sweep{animation:pattern-fade-in .45s ease-out forwards}body.sweep-reveal #mode-sweep{animation:pattern-fade-out .45s ease-in forwards}@keyframes pattern-fade-in{from{opacity:0}to{opacity:1}}@keyframes pattern-fade-out{from{opacity:1}to{opacity:0}}@media print{
-  }));
-      }));    /*#simple-frame{if(window.scrollY>105)document.body.classList.add('is-scrolled');else if(window.scrollY<60)document.body.classList.remove('is-scrolled');};
-  },450); })); /* {display:block
-  $('#pdf-button').addEventListener('click',()=>window.print());
   focusAmbientGrid();
   const canvas=$('#ambient-canvas'),ctx=canvas.getContext?.('2d');
   if(ctx){
