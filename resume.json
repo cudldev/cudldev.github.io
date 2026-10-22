@@ -48,6 +48,58 @@
     "Art pipelines",
     "Particle effects"
   ],
+  "projects": [
+    {
+      "name": "Ultimate Survivors",
+      "dates": "Jan 2025 – Mar 2025",
+      "description": "Supported the live mobile game with UI implementation and improvements.",
+      "highlights": [
+        "Reworked the shop visuals.",
+        "Implemented Chain Offers and Hero Trigger Offers UI.",
+        "Helped split and manage addressables to improve loading times."
+      ]
+    },
+    {
+      "name": "Pax Dei",
+      "dates": "Oct 2022 – Aug 2024",
+      "description": "Worked on UI for Mainframe Industries’ sandbox MMORPG.",
+      "highlights": [
+        "Created Unreal Engine widgets and UI layouts.",
+        "Developed UI materials and animations.",
+        "Contributed to UI and UX design."
+      ]
+    },
+    {
+      "name": "Returnal",
+      "dates": "Apr 2020 – Mar 2022",
+      "description": "Worked on UI visuals for Housemarque’s third-person roguelite shooter for PS5.",
+      "highlights": [
+        "Created UI shaders and materials for the HUD and minimap visualization.",
+        "Worked on in-world holograms, photo mode filters, and post-launch effects."
+      ]
+    },
+    {
+      "name": "Blade Runner: Rogue",
+      "dates": "2017–2020",
+      "description": "Contributed to the official mobile game based on the Blade Runner universe.",
+      "highlights": [
+        "Implemented art assets and built tools to automate production tasks.",
+        "Worked on UI implementation and animation, VFX, shaders, and performance optimization."
+      ]
+    },
+    {
+      "name": "The Rise of Chubtan",
+      "description": "A fast-paced arena brawler where players activate hazards and use attacks to hinder their opponent.",
+      "highlights": [
+        "Designed around changing arenas, varied mechanics, and a handicap system for balanced play."
+      ]
+    },
+    {
+      "name": "Spamketing",
+      "dates": "Sep 2015 – Oct 2015",
+      "description": "A Unity mobile game about marketing an indie game: create daily posts to attract fans, subscribers, and contacts."
+    }
+  ],
   "experience": [
     {
       "company": "BIT ODD",
