@@ -197,25 +197,24 @@ const setMode=simple=>{document.body.classList.toggle('simple-mode',simple);mode
   simpleFrame.addEventListener('load',()=>{resizeSimpleFrame();try{const doc=simpleFrame.contentDocument;new ResizeObserver(resizeSimpleFrame).observe(doc.documentElement);doc.querySelectorAll('img').forEach(img=>img.addEventListener('load',resizeSimpleFrame));}catch(error){console.warn('Could not observe simple CV frame',error);}});
   let sweepAnimation=null,transitionTarget=null,transitionFromSimple=false,sweepFrame=0;
   const sweep=$('#mode-sweep');
-  let sweepLines=[],sweepStep=64*Math.SQRT2;
+  let sweepLines=[],sweepStep=14*Math.SQRT2;
   function buildSweepLines(){
     const width=window.innerWidth,height=window.innerHeight,svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
-    svg.setAttribute('viewBox',`0 0 ${width} ${height}`);svg.setAttribute('preserveAspectRatio','none');sweepStep=64*Math.SQRT2;
+    svg.setAttribute('viewBox',`0 0 ${width} ${height}`);svg.setAttribute('preserveAspectRatio','none');sweepStep=14*Math.SQRT2;
     sweepLines=[];
-    for(let offset=-sweepStep;offset<=width+height+sweepStep;offset+=sweepStep){
-      const x1=Math.max(-sweepStep,offset-(height+sweepStep)),y1=offset-x1,x2=Math.min(width+sweepStep,offset),y2=offset-x2,length=Math.hypot(x2-x1,y2-y1);
-      if(length===0)continue;
+    const overscan=sweepStep*2;
+    for(let offset=-overscan;offset<=width+height+overscan;offset+=sweepStep){
       const line=document.createElementNS('http://www.w3.org/2000/svg','line');
-      line.setAttribute('x1',x1);line.setAttribute('y1',y1);line.setAttribute('x2',x2);line.setAttribute('y2',y2);line.setAttribute('stroke','#080c10');line.setAttribute('stroke-width','0');line.setAttribute('stroke-linecap','butt');
-      const centerX=Math.max(0,Math.min(width,(x1+x2)/2));
-      sweepLines.push({line,order:centerX/width,maxWidth:66});svg.append(line);
+      line.setAttribute('x1',-overscan);line.setAttribute('y1',offset+overscan);line.setAttribute('x2',width+overscan);line.setAttribute('y2',offset-width-overscan);line.setAttribute('stroke','#080c10');line.setAttribute('stroke-width','0');line.setAttribute('stroke-linecap','butt');
+      const enterX=Math.max(0,offset-height),exitX=Math.min(width,offset),centerX=(enterX+exitX)/2;
+      sweepLines.push({line,order:Math.max(0,Math.min(1,centerX/width)),maxWidth:15.5});svg.append(line);
     }
     sweep.replaceChildren(svg);
   }
   function drawSweep(progress,revealing){
-    const reversed=transitionFromSimple;
+    const phaseDuration=sweepAnimation.effect.getTiming().duration/2,fade=110,span=phaseDuration-fade,elapsed=progress*phaseDuration,reversed=transitionFromSimple;
     for(const stripe of sweepLines){
-      const order=reversed?1-stripe.order:stripe.order,local=Math.max(0,Math.min(1,(progress-order*.18)/.82)),eased=.5-.5*Math.cos(Math.PI*local);
+      const order=reversed?1-stripe.order:stripe.order,delay=(.5-.5*Math.cos(Math.PI*order))*fade,local=Math.max(0,Math.min(1,(elapsed-delay)/span)),eased=.5-.5*Math.cos(Math.PI*local);
       stripe.line.setAttribute('stroke-width',(stripe.maxWidth*(revealing?1-eased:eased)).toFixed(2));
     }
   }
@@ -259,7 +258,7 @@ const setMode=simple=>{document.body.classList.toggle('simple-mode',simple);mode
       buildSweepLines();sweep.style.setProperty('--wipe-progress','0%');
       document.body.classList.remove('is-revealing');
       document.body.classList.add('is-transitioning');
-      sweepAnimation=sweep.animate([{'--wipe-progress':'0%',offset:0},{'--wipe-progress':'100%',offset:.5},{'--wipe-progress':'0%',offset:.5},{'--wipe-progress':'100%',offset:1}],{duration:960,easing:'linear',fill:'both'});
+      sweepAnimation=sweep.animate([{'--wipe-progress':'0%',offset:0},{'--wipe-progress':'100%',offset:.5},{'--wipe-progress':'0%',offset:.5},{'--wipe-progress':'100%',offset:1}],{duration:860,easing:'linear',fill:'both'});
       sweepAnimation.onfinish=finishSweep;
       sweepFrame=requestAnimationFrame(syncSweepMode);
       return;
