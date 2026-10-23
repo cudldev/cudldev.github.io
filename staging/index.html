@@ -39,6 +39,16 @@ body.simple-mode{color:var(--paper-ink);background:#eaf0f1;color-scheme:light}bo
 .studio-logo-fallback{display:none!important;width:34px;height:34px;place-items:center;border:1px solid #78909788;border-radius:50%;color:#d8e5e8;font:500 11px/1 "IBM Plex Mono",ui-monospace,monospace;letter-spacing:.04em}
 .studio-logo.is-fallback img{display:none}.studio-logo.is-fallback .studio-logo-fallback{display:grid!important}
 .studio-mark--supercell .studio-logo img,.studio-mark--housemarque .studio-logo img{filter:brightness(0) invert(1)}
+.studio-overview{padding:20px 22px 26px;background:linear-gradient(145deg,rgba(20,31,39,.72),rgba(13,22,29,.62));border:1px solid #829ea32b;border-radius:14px;box-shadow:0 14px 34px #0002}
+.studio-overview h2{margin-bottom:14px}
+.studio-list{gap:10px}
+.studio-mark{min-height:120px;gap:8px;padding:10px 8px;border-radius:9px}
+.studio-logo{width:100%;height:46px}
+.studio-logo img{max-width:120px;max-height:40px}
+.studio-mark>span:last-child{width:100%;height:2.6em;display:flex!important;align-items:center;justify-content:center;text-align:center;font:500 13px/1.25 "Sora","Segoe UI",sans-serif}
+.studio-mark--supercell .studio-logo img,.studio-mark--mainframe-industries .studio-logo img,.studio-mark--housemarque .studio-logo img{filter:brightness(0) invert(1)}
+@media(max-width:760px){.studio-overview{padding:15px 10px 19px}.studio-list{gap:6px}.studio-mark{min-height:106px;padding:8px 4px}.studio-logo{height:42px}}
+@media(max-width:500px){.studio-overview{padding:13px 6px 16px}.studio-mark>span:last-child{font-size:12px}.studio-logo img{max-width:96px;max-height:36px}}
 @media(prefers-reduced-motion:reduce){.warmup-once,.identity.is-typing .type-char{animation:none!important;opacity:1!important}}
 </style>
 
@@ -101,10 +111,10 @@ body.simple-mode{color:var(--paper-ink);background:#eaf0f1;color-scheme:light}bo
     $('#location').textContent=data.location;
     const studios=$('#studio-list'),seenStudios=new Set();
     const studioBranding={
-      'BIT ODD':{logo:'https://bit-odd.com/favicon.ico',monogram:'BO'},
+      'BIT ODD':{logo:'https://www.makersfund.com/img/uploads/bit-odd-logo.png?imwidth=640',monogram:'BO'},
       'Northern Stars':{monogram:'NS'},
-      'Supercell':{logo:'https://supercell.com/_next/static/media/supercell_logo.50e3c1ff.webp',monogram:'SC'},
-      'Mainframe Industries':{logo:'https://cdn.sanity.io/images/n13bd4f0/production/fb409789c6f293a428f383d9572c03eccf09cd43-1000x1000.png?h=200',monogram:'MF'},
+      'Supercell':{logo:'https://commons.wikimedia.org/wiki/Special:FilePath/Supercell-logo.svg',monogram:'SC'},
+      'Mainframe Industries':{logo:'https://cdn.sanity.io/images/n13bd4f0/production/0e562a7dcb8ac991ca0a2c2313cf534a32655fc9-1000x1000.png?h=200',monogram:'MF'},
       'Housemarque':{logo:'https://upload.wikimedia.org/wikipedia/commons/6/64/Housemarque.svg',monogram:'HM'},
       'Next Games':{logo:'https://www.nextgames.com/uploads/Logos/Next_Games_Master_Netflix_Studio_White-RGB_300.png',monogram:'NG'}
     };
