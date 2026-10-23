@@ -148,7 +148,6 @@ body.simple-mode .expertise-card p,body.simple-mode .expertise-intro{color:#5266
   <div class="header-inner">
     <div class="identity" id="identity"><div class="eyebrow">UX / UI · INTERACTION · TECH ART</div><h1 id="name">Antto Väätäinen</h1><p class="role" id="headline">UI Technical Artist · UI/UX</p><p class="summary" id="summary">Loading profile…</p><p class="location" id="location">Helsinki, Finland</p><p class="focus">CORE FOCUS &nbsp; <span>UX/UI DESIGN · INTERACTION · UI PROGRAMMING · SHADERS</span></p></div>
   </div>
-  <div class="header-rule"></div>
 </header>
 <main id="resume-main">
   <section class="studio-overview" id="studio-overview" aria-labelledby="studio-heading"><h2 id="studio-heading">Studios I’ve worked with</h2><div class="studio-list" id="studio-list"></div></section>
@@ -301,7 +300,7 @@ body.simple-mode .expertise-card p,body.simple-mode .expertise-intro{color:#5266
   document.addEventListener('visibilitychange',()=>{if(document.hidden&&$('#identity')?.classList.contains('is-typing'))finishIntroTypewriter();});
   function playScreenWarmup(){
     if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
-    const targets=[...document.querySelectorAll('#portfolio-view .identity, #portfolio-view .header-rule, #portfolio-view .studio-overview, #portfolio-view .studio-overview h2, #portfolio-view .studio-mark, #portfolio-view .section-heading, #portfolio-view .expertise-intro, #portfolio-view .expertise-card, #portfolio-view .project, #portfolio-view .job, #portfolio-view .skills-block, #portfolio-view .contact-grid a, #portfolio-view .site-footer')];
+    const targets=[...document.querySelectorAll('#portfolio-view .identity, #portfolio-view .studio-overview, #portfolio-view .studio-overview h2, #portfolio-view .studio-mark, #portfolio-view .section-heading, #portfolio-view .expertise-intro, #portfolio-view .expertise-card, #portfolio-view .project, #portfolio-view .job, #portfolio-view .skills-block, #portfolio-view .contact-grid a, #portfolio-view .site-footer')];
     const pageHeight=Math.max(document.documentElement.scrollHeight-window.innerHeight,1);
     const placements=targets.map(element=>{const rect=element.getBoundingClientRect();return{element,y:rect.top+window.scrollY,x:rect.left,row:rect.top};}).sort((a,b)=>a.row-b.row||a.x-b.x);
     const rows=[];
