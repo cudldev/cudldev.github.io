@@ -197,22 +197,27 @@ const setMode=simple=>{document.body.classList.toggle('simple-mode',simple);mode
   simpleFrame.addEventListener('load',()=>{resizeSimpleFrame();try{const doc=simpleFrame.contentDocument;new ResizeObserver(resizeSimpleFrame).observe(doc.documentElement);doc.querySelectorAll('img').forEach(img=>img.addEventListener('load',resizeSimpleFrame));}catch(error){console.warn('Could not observe simple CV frame',error);}});
   let sweepAnimation=null,transitionTarget=null,transitionFromSimple=false,sweepFrame=0;
   const sweep=$('#mode-sweep');
-  let sweepLines=[];
+  let sweepLines=[],sweepStep=64*Math.SQRT2;
   function buildSweepLines(){
-    const width=window.innerWidth,height=window.innerHeight,step=40*Math.SQRT2,svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
-    svg.setAttribute('viewBox',`0 0 ${width} ${height}`);svg.setAttribute('preserveAspectRatio','none');sweepLines=[];
-    for(let offset=0;offset<=width+height;offset+=step){
-      const x1=Math.max(0,offset-height),y1=offset-x1,x2=Math.min(width,offset),y2=offset-x2,length=Math.hypot(x2-x1,y2-y1);
+    const width=window.innerWidth,height=window.innerHeight,svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
+    svg.setAttribute('viewBox',`0 0 ${width} ${height}`);svg.setAttribute('preserveAspectRatio','none');sweepStep=64*Math.SQRT2;
+    sweepLines=[];
+    for(let offset=-sweepStep;offset<=width+height+sweepStep;offset+=sweepStep){
+      const x1=Math.max(-sweepStep,offset-(height+sweepStep)),y1=offset-x1,x2=Math.min(width+sweepStep,offset),y2=offset-x2,length=Math.hypot(x2-x1,y2-y1);
       if(length===0)continue;
       const line=document.createElementNS('http://www.w3.org/2000/svg','line');
-      line.setAttribute('x1',x1);line.setAttribute('y1',y1);line.setAttribute('x2',x2);line.setAttribute('y2',y2);line.setAttribute('stroke','#121416');line.setAttribute('stroke-width','40.5');line.setAttribute('stroke-opacity','.56');line.setAttribute('stroke-linecap','butt');line.style.strokeDasharray=length;line.style.strokeDashoffset=length;svg.append(line);
-      sweepLines.push({line,length,centerX:offset-height/2});
+      line.setAttribute('x1',x1);line.setAttribute('y1',y1);line.setAttribute('x2',x2);line.setAttribute('y2',y2);line.setAttribute('stroke','#080c10');line.setAttribute('stroke-width','0');line.setAttribute('stroke-linecap','butt');
+      const centerX=Math.max(0,Math.min(width,(x1+x2)/2));
+      sweepLines.push({line,order:centerX/width,maxWidth:66});svg.append(line);
     }
     sweep.replaceChildren(svg);
   }
   function drawSweep(progress,revealing){
-    const width=window.innerWidth,height=window.innerHeight,step=40*Math.SQRT2,start=-height/2-step/2,travel=width+height+step,reversed=transitionFromSimple,sweepX=reversed?width-start-progress*travel:start+progress*travel;
-    sweepLines.forEach(({line,length,centerX})=>{const stripeStart=centerX-step/2,stripeEnd=centerX+step/2,filled=Math.max(0,Math.min(1,reversed?(stripeEnd-sweepX)/step:(sweepX-stripeStart)/step)),visible=revealing?1-filled:filled;line.style.strokeDashoffset=(length*(1-visible)*(reversed?-1:1)).toFixed(2);});
+    const reversed=transitionFromSimple;
+    for(const stripe of sweepLines){
+      const order=reversed?1-stripe.order:stripe.order,local=Math.max(0,Math.min(1,(progress-order*.18)/.82)),eased=.5-.5*Math.cos(Math.PI*local);
+      stripe.line.setAttribute('stroke-width',(stripe.maxWidth*(revealing?1-eased:eased)).toFixed(2));
+    }
   }
   const currentSimple=()=>document.body.classList.contains('simple-mode');
   const updateModeButtons=simple=>modeButtons.forEach(other=>other.setAttribute('aria-pressed',String((other.dataset.mode==='simple')===simple)));
@@ -254,7 +259,7 @@ const setMode=simple=>{document.body.classList.toggle('simple-mode',simple);mode
       buildSweepLines();sweep.style.setProperty('--wipe-progress','0%');
       document.body.classList.remove('is-revealing');
       document.body.classList.add('is-transitioning');
-      sweepAnimation=sweep.animate([{'--wipe-progress':'0%',offset:0},{'--wipe-progress':'100%',offset:.5},{'--wipe-progress':'0%',offset:.5},{'--wipe-progress':'100%',offset:1}],{duration:1400,easing:'linear',fill:'both'});
+      sweepAnimation=sweep.animate([{'--wipe-progress':'0%',offset:0},{'--wipe-progress':'100%',offset:.5},{'--wipe-progress':'0%',offset:.5},{'--wipe-progress':'100%',offset:1}],{duration:960,easing:'linear',fill:'both'});
       sweepAnimation.onfinish=finishSweep;
       sweepFrame=requestAnimationFrame(syncSweepMode);
       return;
