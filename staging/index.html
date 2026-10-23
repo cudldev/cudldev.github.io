@@ -101,9 +101,13 @@ body.simple-mode .menu-toggle{background:#101a21;color:var(--ink);border-color:#
 .site-footer{background:rgba(8,14,19,.58);backdrop-filter:blur(12px)}
 @media(max-width:760px){.mode-toggle{width:184px}.mode-toggle .mode-option{min-width:86px;padding:7px 10px;font-size:12px}}
 @media(max-width:500px){.mode-toggle{width:160px}.mode-toggle .mode-option{min-width:76px;padding:6px 8px;font-size:11px}}
+</style><style id="ambient-edge-aberration">
+#ambient:before{z-index:0;background-image:linear-gradient(rgba(94,231,211,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(94,231,211,.045) 1px,transparent 1px);background-size:36px 36px;background-position:0 0}
+.ambient-aberration{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.78;mix-blend-mode:screen;background-image:linear-gradient(rgba(255,92,122,.11) 1px,transparent 1px),linear-gradient(90deg,rgba(255,92,122,.11) 1px,transparent 1px),linear-gradient(rgba(97,174,255,.11) 1px,transparent 1px),linear-gradient(90deg,rgba(97,174,255,.11) 1px,transparent 1px);background-size:36px 36px;background-position:2px 0,2px 0,-2px 0,-2px 0;-webkit-mask-image:radial-gradient(ellipse at center,transparent 38%,rgba(0,0,0,.2) 62%,#000 100%);mask-image:radial-gradient(ellipse at center,transparent 38%,rgba(0,0,0,.2) 62%,#000 100%)}
+#ambient:after{z-index:2}
 </style></head>
 <body class="is-loading">
-<div id="ambient" aria-hidden="true"></div>
+<div id="ambient" aria-hidden="true"><div class="ambient-aberration"></div></div>
 <div id="page-vignette" aria-hidden="true"></div>
 <div class="top-row site-nav">
   <div class="header-inner">

@@ -93,9 +93,14 @@ body.simple-mode .studio-overview h2{color:#677b86}body.simple-mode .studio-mark
 @media(max-width:760px){.studio-overview{padding:15px 10px 19px;margin-bottom:32px}.studio-list{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}.studio-mark{min-height:106px;padding:8px 4px}.studio-logo{height:42px}}
 @media(max-width:500px){.studio-overview{padding:13px 6px 16px}.studio-overview h2{font-size:10px;margin-bottom:12px}.studio-mark>span:last-child{font-size:12px}.studio-logo img{max-width:106px;max-height:40px}}
 </style>
+<style id="ambient-edge-aberration">
+#ambient:before{z-index:0;background-image:linear-gradient(rgba(94,231,211,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(94,231,211,.045) 1px,transparent 1px);background-size:36px 36px;background-position:0 0}
+.ambient-aberration{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.78;mix-blend-mode:screen;background-image:linear-gradient(rgba(255,92,122,.11) 1px,transparent 1px),linear-gradient(90deg,rgba(255,92,122,.11) 1px,transparent 1px),linear-gradient(rgba(97,174,255,.11) 1px,transparent 1px),linear-gradient(90deg,rgba(97,174,255,.11) 1px,transparent 1px);background-size:36px 36px;background-position:2px 0,2px 0,-2px 0,-2px 0;-webkit-mask-image:radial-gradient(ellipse at center,transparent 38%,rgba(0,0,0,.2) 62%,#000 100%);mask-image:radial-gradient(ellipse at center,transparent 38%,rgba(0,0,0,.2) 62%,#000 100%)}
+#ambient:after{z-index:2}
+</style>
 </head>
 <body class="is-loading">
-<div id="ambient" aria-hidden="true"></div>
+<div id="ambient" aria-hidden="true"><div class="ambient-aberration"></div></div>
 <div id="page-vignette" aria-hidden="true"></div>
 <div class="top-row site-nav">
   <div class="header-inner">
