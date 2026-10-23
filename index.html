@@ -94,8 +94,9 @@ body.simple-mode .studio-overview h2{color:#677b86}body.simple-mode .studio-mark
 @media(max-width:500px){.studio-overview{padding:13px 6px 16px}.studio-overview h2{font-size:10px;margin-bottom:12px}.studio-mark>span:last-child{font-size:12px}.studio-logo img{max-width:106px;max-height:40px}}
 </style>
 <style id="ambient-edge-aberration">
-#ambient:before{z-index:0;background-image:linear-gradient(rgba(94,231,211,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(94,231,211,.045) 1px,transparent 1px);background-size:36px 36px;background-position:0 0}
-.ambient-aberration{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.78;mix-blend-mode:screen;background-image:linear-gradient(rgba(255,92,122,.11) 1px,transparent 1px),linear-gradient(90deg,rgba(255,92,122,.11) 1px,transparent 1px),linear-gradient(rgba(97,174,255,.11) 1px,transparent 1px),linear-gradient(90deg,rgba(97,174,255,.11) 1px,transparent 1px);background-size:36px 36px;background-position:0 2px,2px 0,0 -2px,-2px 0;-webkit-mask-image:radial-gradient(ellipse at center,transparent 38%,rgba(0,0,0,.2) 62%,#000 100%);mask-image:radial-gradient(ellipse at center,transparent 38%,rgba(0,0,0,.2) 62%,#000 100%)}
+#ambient:before{z-index:0;background-image:linear-gradient(rgba(94,231,211,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(94,231,211,.045) 1px,transparent 1px);background-size:36px 36px;background-position:0 var(--grid-parallax,0px),0 var(--grid-parallax,0px)}
+.ambient-aberration{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.78;mix-blend-mode:screen;background-image:linear-gradient(rgba(255,92,122,.11) 1px,transparent 1px),linear-gradient(90deg,rgba(255,92,122,.11) 1px,transparent 1px),linear-gradient(rgba(97,174,255,.11) 1px,transparent 1px),linear-gradient(90deg,rgba(97,174,255,.11) 1px,transparent 1px);background-size:36px 36px;background-position:0 calc(var(--grid-parallax,0px) + 2px),2px var(--grid-parallax,0px),0 calc(var(--grid-parallax,0px) - 2px),-2px var(--grid-parallax,0px);-webkit-mask-image:radial-gradient(ellipse at center,transparent 48%,rgba(0,0,0,.12) 70%,#000 100%);mask-image:radial-gradient(ellipse at center,transparent 48%,rgba(0,0,0,.12) 70%,#000 100%)}
+@media(prefers-reduced-motion:reduce){#ambient{--grid-parallax:0px!important}}
 #ambient:after{z-index:2}
 </style>
 </head>
@@ -364,7 +365,7 @@ const setMode=simple=>{document.body.classList.toggle('simple-mode',simple);upda
     cancelAnimationFrame(sweepFrame);sweepFrame=requestAnimationFrame(syncSweepMode);
   });
   window.addEventListener('resize',()=>{if(sweepAnimation){buildSweepLines();syncSweepMode();}});
-  const onScroll=()=>{if(window.scrollY>105)document.body.classList.add('is-scrolled');else if(window.scrollY<60)document.body.classList.remove('is-scrolled');};
+  const onScroll=()=>{const ambient=$('#ambient'),offset=-window.scrollY*.012;ambient?.style.setProperty('--grid-parallax',offset.toFixed(2)+'px');if(window.scrollY>105)document.body.classList.add('is-scrolled');else if(window.scrollY<60)document.body.classList.remove('is-scrolled');};
   window.addEventListener('scroll',onScroll,{passive:true});onScroll();
   let printReturnMode=null;
   function restoreAfterPrint(){if(printReturnMode===null)return;const restore=printReturnMode;printReturnMode=null;setMode(restore);updateModeButtons(restore);delete document.body.dataset.printing;}
