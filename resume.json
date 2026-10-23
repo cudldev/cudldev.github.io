@@ -61,7 +61,21 @@
         "Created UI animation and VFX.",
         "Optimized and scaled UI across devices."
       ],
-      "engine": "Unity"
+      "engine": "Unity",
+      "platforms": [
+        {
+          "platform": "iOS",
+          "store": "App Store",
+          "icon": "appstore",
+          "url": "https://apps.apple.com/my/app/field-day/id6754967275"
+        },
+        {
+          "platform": "Android",
+          "store": "Google Play",
+          "icon": "android",
+          "url": "https://play.google.com/store/apps/details?id=com.bitodd.vortex&hl=en"
+        }
+      ]
     },
     {
       "name": "Ultimate Survivors",
