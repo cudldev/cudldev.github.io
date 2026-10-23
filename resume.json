@@ -123,8 +123,8 @@
       "image": "https://image.api.playstation.com/vulcan/ap/rnd/202512/0120/29617d8e70b24ffa3f63508187fcc886f6696a69b413cdc5.jpg",
       "description": "Supported Saros during pre-production at Housemarque.",
       "highlights": [
-        "Documented UX/UI decisions for Photo Mode, the minimap, and other features informed by Returnal.",
-        "Researched new approaches to creating UI materials and shaders in Unreal Engine 5 using HLSL."
+        "Documented UX/UI decisions for Photo Mode, the minimap, and other features, drawing on experience from Returnal.",
+        "Researched new approaches to creating UI materials and shaders in Unreal Engine 5."
       ],
       "engine": "Unreal Engine 5",
       "platforms": [
@@ -144,7 +144,7 @@
       "description": "Housemarque’s third-person roguelite shooter for PS5.",
       "highlights": [
         "Worked on UI-related shaders and materials for the HUD, minimap visualization, and in-world holograms.",
-        "Created photo mode filters and effects for post-launch."
+        "Created Photo Mode filters and effects."
       ],
       "engine": "Unreal Engine",
       "platforms": [
