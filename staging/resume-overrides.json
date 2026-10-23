@@ -1,0 +1,16 @@
+{
+  "projects": {
+    "Saros": {
+      "highlights": [
+        "Documented UX/UI decisions for Photo Mode, the minimap, and other features, drawing on experience from Returnal.",
+        "Researched new approaches to creating UI materials and shaders in Unreal Engine 5."
+      ]
+    },
+    "Returnal": {
+      "highlights": [
+        "Worked on UI-related shaders and materials for the HUD, minimap visualization, and in-world holograms.",
+        "Created Photo Mode filters and effects."
+      ]
+    }
+  }
+}

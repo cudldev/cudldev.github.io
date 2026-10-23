@@ -113,6 +113,13 @@ body.simple-mode{color:var(--paper-ink);background:#eaf0f1;color-scheme:light}bo
     const response=await fetch('../resume.json',{cache:'no-store'});
     if(!response.ok) throw new Error('Could not load resume.json');
     const data=await response.json();
+    if(location.pathname.startsWith('/staging/')){
+      const overridesResponse=await fetch('./resume-overrides.json',{cache:'no-store'});
+      if(overridesResponse.ok){
+        const overrides=await overridesResponse.json();
+        data.projects=(data.projects||[]).map(project=>({...project,...(overrides.projects?.[project.name]||{})}));
+      }
+    }
     $('#name').textContent=data.name;
     $('#headline').textContent=data.headline;
     $('#summary').textContent=data.summary;
