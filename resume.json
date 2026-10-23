@@ -73,6 +73,7 @@
         "Implemented the Chain Offers and Hero Trigger Offers UI.",
         "Helped split and manage addressables to improve loading times."
       ],
+      "engine": "Unity",
       "platforms": [
         {
           "platform": "iOS",
@@ -177,6 +178,7 @@
         "Implemented art assets and created tools to automate and streamline production.",
         "Worked on UI implementation and animation, VFX, shaders, and performance optimization."
       ],
+      "engine": "Unity",
       "platforms": [
         {
           "platform": "iOS"
