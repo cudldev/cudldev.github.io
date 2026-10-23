@@ -273,8 +273,25 @@ const setMode=simple=>{document.body.classList.toggle('simple-mode',simple);mode
   window.addEventListener('resize',()=>{if(sweepAnimation){buildSweepLines();syncSweepMode();}});
   const onScroll=()=>{if(window.scrollY>105)document.body.classList.add('is-scrolled');else if(window.scrollY<60)document.body.classList.remove('is-scrolled');};
   window.addEventListener('scroll',onScroll,{passive:true});onScroll();
-  $('#pdf-button').addEventListener('click',()=>{const frame=$('#simple-frame');if(frame.contentWindow){frame.contentWindow.focus();frame.contentWindow.print();}else window.print();});
-  let wasSimpleBeforePrint=false;addEventListener('beforeprint',()=>{wasSimpleBeforePrint=document.body.classList.contains('simple-mode');setMode(true);document.body.dataset.printing='true';});addEventListener('afterprint',()=>{setMode(wasSimpleBeforePrint);delete document.body.dataset.printing;});
+  let printReturnMode=null;
+  function restoreAfterPrint(){if(printReturnMode===null)return;const restore=printReturnMode;printReturnMode=null;setMode(restore);updateModeButtons(restore);delete document.body.dataset.printing;}
+  $('#pdf-button').addEventListener('click',async()=>{
+    const frame=$('#simple-frame');
+    if(printReturnMode!==null)return;
+    printReturnMode=document.body.classList.contains('simple-mode');
+    document.body.dataset.printing='true';setMode(true);updateModeButtons(true);
+    try{
+      await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
+      resizeSimpleFrame();
+      const doc=frame.contentDocument;
+      if(doc?.fonts?.ready)await doc.fonts.ready;
+      if(!frame.contentWindow)throw new Error('CV frame is not ready');
+      frame.contentWindow.addEventListener('afterprint',restoreAfterPrint,{once:true});
+      frame.contentWindow.focus();frame.contentWindow.print();
+    }catch(error){console.warn('Could not print compact CV frame',error);window.print();}
+  });
+  addEventListener('beforeprint',()=>{if(printReturnMode===null)printReturnMode=document.body.classList.contains('simple-mode');setMode(true);document.body.dataset.printing='true';});
+  addEventListener('afterprint',restoreAfterPrint);
 })();
 </script>
 </body>
