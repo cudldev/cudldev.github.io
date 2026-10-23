@@ -254,12 +254,13 @@ body.simple-mode .expertise-card p,body.simple-mode .expertise-intro{color:#5266
       top.append(heading); if(item.dates) top.append(el('time','',item.dates)); copy.append(top);
       if(item.description) copy.append(el('p','',item.description));
       if(Array.isArray(item.highlights)&&item.highlights.length){const list=el('ul');item.highlights.forEach(x=>list.append(el('li','',x)));copy.append(list);}
-      if(item.engine||(Array.isArray(item.platforms)&&item.platforms.length)){
+      const platformsToRender=item.name==='Ultimate Survivors'?(item.platforms||[]).map(({url,...platform})=>platform):item.platforms;
+      if(item.engine||(Array.isArray(platformsToRender)&&platformsToRender.length)){
         const meta=el('div','project-meta');
         if(item.engine){const engine=el('span','project-engine');engine.append(el('span','project-meta-label','ENGINE'));const engineValue=item.engineUrl?external(item.engineUrl,''):el('span');engineValue.className=item.engineUrl?'engine-chip store-link':'engine-chip platform-chip';if(item.engineUrl){engineValue.setAttribute('aria-label','Open '+item.engine+' website in a new tab');engineValue.title='Visit '+item.engine;}const engineSlug=/unity/i.test(item.engine)?'unity':/unreal/i.test(item.engine)?'unrealengine':'';if(engineSlug){const logo=el('img','engine-logo');logo.src='https://cdn.simpleicons.org/'+engineSlug+'/FFFFFF';logo.alt='';logo.loading='lazy';logo.decoding='async';engineValue.append(logo);}engineValue.append(el('strong','',item.engine));if(item.engineUrl)engineValue.append(externalIcon());engine.append(engineValue);meta.append(engine);}
-        if(Array.isArray(item.platforms)&&item.platforms.length){
+        if(Array.isArray(platformsToRender)&&platformsToRender.length){
           const platformGroup=el('div','project-platforms');platformGroup.append(el('span','project-meta-label','PLATFORMS'));const platforms=el('div','store-links');
-          item.platforms.forEach(platform=>{
+          platformsToRender.forEach(platform=>{
             const icon=platform.icon||(platform.platform==='iOS'?'appstore':platform.platform==='Android'?'android':'');
             const iconName=icon==='epic'?'epicgames':icon;
             const label=platform.store==='Epic Games Store'?'Epic':platform.store==='PlayStation Store'?platform.platform:platform.store==='App Store'?platform.platform:platform.store==='Steam'?'Steam':platform.platform;
