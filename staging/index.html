@@ -92,6 +92,8 @@ body.simple-mode #page-vignette{display:none}
 .header-social-links a,.mobile-social-links a{display:flex;align-items:center;justify-content:space-between;gap:8px;color:#c8d8da;text-decoration:none;font:500 11px/1.2 "IBM Plex Mono",ui-monospace,monospace}
 .header-social-links a{padding:8px 10px;border:1px solid #49616b;border-radius:6px;background:#101a21}
 .header-social-links a:hover,.mobile-social-links a:hover{border-color:var(--teal);color:var(--teal)}
+.social-link-label{display:inline-flex;align-items:center;gap:7px;min-width:0}
+.social-brand-icon{display:block;width:14px;height:14px;flex:none;fill:currentColor}
 .social-menu-heading{display:none;margin:4px 8px 0;color:#82989f;font:400 9px/1.4 "IBM Plex Mono",ui-monospace,monospace;letter-spacing:.13em;text-transform:uppercase}
 .mobile-social-links{display:none}
 body.simple-mode .header-social-links a{background:#101a21;color:var(--ink);border-color:#49616b}
@@ -148,8 +150,8 @@ body.simple-mode .expertise-card p,body.simple-mode .expertise-intro{color:#5266
         <details class="share-wrap"><summary class="action-button">Share CV</summary><div class="qr-panel"><img src="../resume-qr.svg" alt="QR code for Antto Väätäinen’s CV"><p>Scan to open the live CV.</p><a href="../resume-qr.svg" download="Antto-Vaatainen-CV-QR.svg">Download QR code</a></div></details>
         <p class="social-menu-heading">More</p>
         <div class="mobile-social-links" aria-label="Professional profiles">
-          <a href="https://cudl.artstation.com" target="_blank" rel="noopener noreferrer">ArtStation<svg class="outbound-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M9 3h4v4M13 3 7 9"/><path d="M12 9v3a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3"/></svg></a>
-          <a href="https://linkedin.com/in/cudl" target="_blank" rel="noopener noreferrer">LinkedIn<svg class="outbound-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M9 3h4v4M13 3 7 9"/><path d="M12 9v3a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3"/></svg></a>
+          <a href="https://cudl.artstation.com" target="_blank" rel="noopener noreferrer"><span class="social-link-label"><svg class="social-brand-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 17.723l2.027 3.505h.001a2.424 2.424 0 0 0 2.164 1.333h13.457l-2.792-4.838H0zm24 .025c0-.484-.143-.935-.388-1.314L15.728 2.728a2.424 2.424 0 0 0-2.142-1.289H9.419L21.598 22.54l1.92-3.325c.378-.637.482-.919.482-1.467zm-11.129-3.462L7.428 4.858l-5.444 9.428h10.887z"/></svg><span>ArtStation</span></span><svg class="outbound-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M9 3h4v4M13 3 7 9"/><path d="M12 9v3a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3"/></svg></a>
+          <a href="https://linkedin.com/in/cudl" target="_blank" rel="noopener noreferrer"><span class="social-link-label"><svg class="social-brand-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.06 2.06 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065m1.782 13.019H3.555V9h3.564zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C23.2.774 23.2 0 22.222 0z"/></svg><span>LinkedIn</span></span><svg class="outbound-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M9 3h4v4M13 3 7 9"/><path d="M12 9v3a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3"/></svg></a>
         </div>
       </div>
     </div>
@@ -158,8 +160,8 @@ body.simple-mode .expertise-card p,body.simple-mode .expertise-intro{color:#5266
       <span class="mode-option" data-mode="simple"><span class="mode-label">Simple CV</span></span>
     </button>
     <div class="header-social-links" aria-label="Professional profiles">
-      <a href="https://cudl.artstation.com" target="_blank" rel="noopener noreferrer">ArtStation<svg class="outbound-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M9 3h4v4M13 3 7 9"/><path d="M12 9v3a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3"/></svg></a>
-      <a href="https://linkedin.com/in/cudl" target="_blank" rel="noopener noreferrer">LinkedIn<svg class="outbound-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M9 3h4v4M13 3 7 9"/><path d="M12 9v3a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3"/></svg></a>
+      <a href="https://cudl.artstation.com" target="_blank" rel="noopener noreferrer"><span class="social-link-label"><svg class="social-brand-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 17.723l2.027 3.505h.001a2.424 2.424 0 0 0 2.164 1.333h13.457l-2.792-4.838H0zm24 .025c0-.484-.143-.935-.388-1.314L15.728 2.728a2.424 2.424 0 0 0-2.142-1.289H9.419L21.598 22.54l1.92-3.325c.378-.637.482-.919.482-1.467zm-11.129-3.462L7.428 4.858l-5.444 9.428h10.887z"/></svg><span>ArtStation</span></span><svg class="outbound-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M9 3h4v4M13 3 7 9"/><path d="M12 9v3a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3"/></svg></a>
+      <a href="https://linkedin.com/in/cudl" target="_blank" rel="noopener noreferrer"><span class="social-link-label"><svg class="social-brand-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.06 2.06 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065m1.782 13.019H3.555V9h3.564zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C23.2.774 23.2 0 22.222 0z"/></svg><span>LinkedIn</span></span><svg class="outbound-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M9 3h4v4M13 3 7 9"/><path d="M12 9v3a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3"/></svg></a>
     </div>
   </div>
 </div>
