@@ -270,7 +270,7 @@ body.simple-mode .menu-toggle{background:#101a21;color:var(--ink);border-color:#
   document.addEventListener('visibilitychange',()=>{if(document.hidden&&$('#identity')?.classList.contains('is-typing'))finishIntroTypewriter();});
   function playScreenWarmup(){
     if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
-    const targets=[...document.querySelectorAll('#portfolio-view .identity, #portfolio-view .header-rule, #portfolio-view .studio-overview h2, #portfolio-view .studio-mark, #portfolio-view .section-heading, #portfolio-view .project, #portfolio-view .job, #portfolio-view .skills-block, #portfolio-view .contact-grid a, #portfolio-view .site-footer')];
+    const targets=[...document.querySelectorAll('#portfolio-view .identity, #portfolio-view .header-rule, #portfolio-view .studio-overview, #portfolio-view .studio-overview h2, #portfolio-view .studio-mark, #portfolio-view .section-heading, #portfolio-view .project, #portfolio-view .job, #portfolio-view .skills-block, #portfolio-view .contact-grid a, #portfolio-view .site-footer')];
     const pageHeight=Math.max(document.documentElement.scrollHeight-window.innerHeight,1);
     const placements=targets.map(element=>{const rect=element.getBoundingClientRect();return{element,y:rect.top+window.scrollY,x:rect.left,row:rect.top};}).sort((a,b)=>a.row-b.row||a.x-b.x);
     const rows=[];
