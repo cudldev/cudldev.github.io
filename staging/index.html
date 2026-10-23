@@ -53,7 +53,7 @@ body.simple-mode{color:var(--paper-ink);background:#eaf0f1;color-scheme:light}bo
 .studio-mark--next-games{--studio-logo-scale:1.05}
 .studio-mark>span:last-child{width:100%;height:2.6em;display:flex!important;align-items:center;justify-content:center;text-align:center;font:500 13px/1.25 "Sora","Segoe UI",sans-serif}
 .studio-mark--supercell .studio-logo img,.studio-mark--mainframe-industries .studio-logo img,.studio-mark--housemarque .studio-logo img{filter:brightness(0) invert(1)}
-.studio-mark--bit-odd .studio-logo img{filter:invert(1);mix-blend-mode:screen}
+.studio-mark--bit-odd .studio-logo img{filter:url(#bitodd-white-mark)}
 @media(max-width:760px){.studio-overview{padding:15px 10px 19px}.studio-list{gap:6px}.studio-mark{min-height:106px;padding:8px 4px}.studio-logo{height:42px}}
 @media(max-width:500px){.studio-overview{padding:13px 6px 16px}.studio-mark>span:last-child{font-size:12px}.studio-logo img{max-width:106px;max-height:40px}}
 @media(prefers-reduced-motion:reduce){.warmup-once,.identity.is-typing .type-char{animation:none!important;opacity:1!important}}
@@ -71,6 +71,7 @@ body.simple-mode{color:var(--paper-ink);background:#eaf0f1;color-scheme:light}bo
 #corner-tuner{position:fixed;z-index:50;right:20px;bottom:20px;width:min(310px,calc(100vw - 32px));padding:16px 18px;background:rgba(9,16,22,.96);border:1px solid #5ee7d366;border-radius:12px;box-shadow:0 12px 36px #0008;color:#e5eff1;font:12px/1.45 "IBM Plex Mono",ui-monospace,monospace;backdrop-filter:blur(12px)}#corner-tuner h2{margin:0 0 12px;color:#5ee7d3;font:600 12px/1.3 "IBM Plex Mono",ui-monospace,monospace;letter-spacing:.1em;text-transform:uppercase}#corner-tuner label{display:grid;grid-template-columns:1fr auto;gap:7px 10px;margin:11px 0}#corner-tuner output{color:#c5e96b}#corner-tuner input{grid-column:1/-1;width:100%;accent-color:#5ee7d3}#corner-tuner button{margin-top:6px;padding:7px 10px;border:1px solid #829ea344;border-radius:6px;background:transparent;color:#d6e2e4;font:inherit;cursor:pointer}#corner-tuner button:hover{border-color:#5ee7d3;color:#5ee7d3}body.simple-mode #corner-tuner{display:none}@media(max-width:500px){#corner-tuner{right:12px;bottom:12px}}
 </style></head>
 <body class="is-loading">
+<svg aria-hidden="true" width="0" height="0" style="position:absolute;overflow:hidden"><defs><filter id="bitodd-white-mark" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 4.1667 4.1667 4.1667 0 -11.5"/></filter></defs></svg>
 <div id="ambient" aria-hidden="true"></div>
 <div id="page-vignette" aria-hidden="true"></div>
 <div class="top-row site-nav">
