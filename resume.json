@@ -66,7 +66,7 @@
     {
       "name": "Ultimate Survivors",
       "dates": "Jan 2025 – Mar 2025",
-      "image": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/6a/8a/7a/6a8a7a81-0062-59f3-d2f7-065730ab6ebb/AppIcon-1x_U007emarketing-0-7-0-85-220-0.png/1200x630wa.png",
+      "image": "/assets/ultimate-survivors-preview.png",
       "description": "Helped implement new UI features for the live game.",
       "highlights": [
         "Reworked the shop visuals, giving the store a facelift.",
