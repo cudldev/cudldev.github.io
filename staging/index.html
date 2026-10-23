@@ -34,6 +34,11 @@ body.simple-mode{color:var(--paper-ink);background:#eaf0f1;color-scheme:light}bo
 }
 .warmup-once { animation: screen-warmup .85s ease-out var(--warmup-delay, .4s) both; }
 .type-char{opacity:1}.identity.is-typing .type-char{opacity:0}.identity.is-typing .type-char.is-visible{opacity:1}
+.studio-logo{width:min(112px,100%);height:36px;display:grid!important;place-items:center;position:relative}
+.studio-logo img{display:block;width:auto;height:auto;max-width:100%;max-height:36px;object-fit:contain;filter:none;opacity:.94}
+.studio-logo-fallback{display:none!important;width:34px;height:34px;place-items:center;border:1px solid #78909788;border-radius:50%;color:#d8e5e8;font:500 11px/1 "IBM Plex Mono",ui-monospace,monospace;letter-spacing:.04em}
+.studio-logo.is-fallback img{display:none}.studio-logo.is-fallback .studio-logo-fallback{display:grid!important}
+.studio-mark--supercell .studio-logo img,.studio-mark--housemarque .studio-logo img{filter:brightness(0) invert(1)}
 @media(prefers-reduced-motion:reduce){.warmup-once,.identity.is-typing .type-char{animation:none!important;opacity:1!important}}
 </style>
 
@@ -95,6 +100,14 @@ body.simple-mode{color:var(--paper-ink);background:#eaf0f1;color-scheme:light}bo
     $('#summary').textContent=data.summary;
     $('#location').textContent=data.location;
     const studios=$('#studio-list'),seenStudios=new Set();
+    const studioBranding={
+      'BIT ODD':{logo:'https://bit-odd.com/favicon.ico',monogram:'BO'},
+      'Northern Stars':{logo:'https://northernstars.com/favicon.ico',monogram:'NS'},
+      'Supercell':{logo:'https://supercell.com/_next/static/media/supercell_logo.50e3c1ff.webp',monogram:'SC'},
+      'Mainframe Industries':{logo:'https://cdn.sanity.io/images/n13bd4f0/production/fb409789c6f293a428f383d9572c03eccf09cd43-1000x1000.png?h=200',monogram:'MF'},
+      'Housemarque':{logo:'https://upload.wikimedia.org/wikipedia/commons/6/64/Housemarque.svg',monogram:'HM'},
+      'Next Games':{logo:'https://www.nextgames.com/uploads/Logos/Next_Games_Master_Netflix_Studio_White-RGB_300.png',monogram:'NG'}
+    };
     (data.experience||[]).forEach(job=>{
       if(!job.company||seenStudios.has(job.company))return;
       seenStudios.add(job.company);
@@ -103,11 +116,13 @@ body.simple-mode{color:var(--paper-ink);background:#eaf0f1;color-scheme:light}bo
       mark.className='studio-mark studio-mark--'+slug;
       mark.href='#experience-'+slug;
       mark.setAttribute('aria-label','Jump to '+job.company+' in Experience');
-      const logo=el('img');
-      const domain=job.company==='Northern Stars'?'northernstars.com':new URL(job.url||'https://example.com').hostname.replace(/^www\./,'');
-      logo.src='https://www.google.com/s2/favicons?domain='+encodeURIComponent(domain)+'&sz=128';
-      logo.alt='';logo.loading='lazy';logo.decoding='async';
-      mark.append(logo,el('span','',job.company));
+      const brand=studioBranding[job.company]||{monogram:job.company.split(/\s+/).map(part=>part[0]).join('').slice(0,2)};
+      const logoBox=el('span','studio-logo'),logo=el('img'),fallback=el('span','studio-logo-fallback',brand.monogram);
+      logo.alt=job.company+' logo';logo.loading='lazy';logo.decoding='async';
+      logo.addEventListener('error',()=>logoBox.classList.add('is-fallback'),{once:true});
+      logo.addEventListener('load',()=>logoBox.classList.add('has-logo'),{once:true});
+      logoBox.append(logo,fallback);if(brand.logo)logo.src=brand.logo;else logoBox.classList.add('is-fallback');
+      mark.append(logoBox,el('span','',job.company));
       studios.append(mark);
     });
     const projects=$('#projects');
