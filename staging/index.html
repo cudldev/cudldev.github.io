@@ -88,6 +88,14 @@ body.simple-mode #page-vignette{display:none}
 .nav-menu .share-wrap{width:100%}
 .nav-menu .share-wrap>summary{width:100%;text-align:left;cursor:pointer}
 .nav-menu .qr-panel{top:calc(100% + 8px);left:auto;right:0;width:min(225px,calc(100vw - 40px))}
+.header-social-links{grid-column:3;grid-row:1;justify-self:end;display:flex;align-items:center;gap:7px;margin-right:52px}
+.header-social-links a,.mobile-social-links a{display:flex;align-items:center;justify-content:space-between;gap:8px;color:#c8d8da;text-decoration:none;font:500 11px/1.2 "IBM Plex Mono",ui-monospace,monospace}
+.header-social-links a{padding:8px 10px;border:1px solid #49616b;border-radius:6px;background:#101a21}
+.header-social-links a:hover,.mobile-social-links a:hover{border-color:var(--teal);color:var(--teal)}
+.social-menu-heading{display:none;margin:4px 8px 0;color:#82989f;font:400 9px/1.4 "IBM Plex Mono",ui-monospace,monospace;letter-spacing:.13em;text-transform:uppercase}
+.mobile-social-links{display:none}
+body.simple-mode .header-social-links a{background:#101a21;color:var(--ink);border-color:#49616b}
+@media(max-width:760px){.header-social-links{display:none}.social-menu-heading{display:block}.mobile-social-links{display:grid;gap:6px;padding:4px 0 2px}.mobile-social-links a{width:100%;padding:8px 10px;border:1px solid #49616b;border-radius:6px;background:#101a21}}
 body.simple-mode .menu-toggle{background:#101a21;color:var(--ink);border-color:#49616b}
 @media(max-width:500px){.top-row .header-inner{gap:8px}.menu-toggle{width:40px;height:40px}.mode-toggle button{padding:6px 8px;font-size:11px}}
 @media(max-width:1400px){.studio-mark{min-width:0}.studio-logo{min-width:0;overflow:hidden}.studio-logo img{max-width:88%;transform:none!important}}
@@ -138,13 +146,21 @@ body.simple-mode .expertise-card p,body.simple-mode .expertise-intro{color:#5266
       <div id="nav-menu" class="nav-menu" hidden>
         <button class="action-button" type="button" id="pdf-button">Save as PDF</button>
         <details class="share-wrap"><summary class="action-button">Share CV</summary><div class="qr-panel"><img src="../resume-qr.svg" alt="QR code for Antto Väätäinen’s CV"><p>Scan to open the live CV.</p><a href="../resume-qr.svg" download="Antto-Vaatainen-CV-QR.svg">Download QR code</a></div></details>
+        <p class="social-menu-heading">More</p>
+        <div class="mobile-social-links" aria-label="Professional profiles">
+          <a href="https://cudl.artstation.com" target="_blank" rel="noopener noreferrer">ArtStation<svg class="outbound-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M9 3h4v4M13 3 7 9"/><path d="M12 9v3a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3"/></svg></a>
+          <a href="https://linkedin.com/in/cudl" target="_blank" rel="noopener noreferrer">LinkedIn<svg class="outbound-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M9 3h4v4M13 3 7 9"/><path d="M12 9v3a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3"/></svg></a>
+        </div>
       </div>
     </div>
     <button type="button" id="mode-toggle" class="mode-toggle" aria-label="Switch to Simple CV">
       <span class="mode-option is-active" data-mode="portfolio"><span class="mode-label">Portfolio</span></span>
       <span class="mode-option" data-mode="simple"><span class="mode-label">Simple CV</span></span>
     </button>
-    <div aria-hidden="true"></div>
+    <div class="header-social-links" aria-label="Professional profiles">
+      <a href="https://cudl.artstation.com" target="_blank" rel="noopener noreferrer">ArtStation<svg class="outbound-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M9 3h4v4M13 3 7 9"/><path d="M12 9v3a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3"/></svg></a>
+      <a href="https://linkedin.com/in/cudl" target="_blank" rel="noopener noreferrer">LinkedIn<svg class="outbound-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M9 3h4v4M13 3 7 9"/><path d="M12 9v3a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3"/></svg></a>
+    </div>
   </div>
 </div>
 <section id="simple-view" aria-label="Simple CV"><iframe id="simple-frame" title="Simple CV, matching the live resume" src="../simple.html?view=simple&amp;v=pdf-unified-20261023" loading="eager" scrolling="no"></iframe></section>
