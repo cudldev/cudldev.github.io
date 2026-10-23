@@ -63,7 +63,8 @@ body.simple-mode #page-vignette{display:none}
 .nav-menu .qr-panel{top:calc(100% + 8px);left:auto;right:0;width:min(225px,calc(100vw - 40px));border-radius:8px}
 .mode-toggle{position:relative;display:inline-grid;grid-template-columns:1fr 1fr;isolation:isolate;appearance:none;cursor:pointer}
 .mode-toggle::before{content:"";position:absolute;z-index:0;inset:4px auto 4px 4px;width:calc(50% - 4px);border-radius:999px;background:var(--teal);box-shadow:0 0 18px #5ee7d344;transition:transform .10s cubic-bezier(.2,.75,.25,1)}
-.mode-toggle .mode-option{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;box-sizing:border-box;height:40px;min-width:96px;padding:0 12px;border-radius:999px;color:#c2d0d2;text-align:center;font:500 13px/1 "IBM Plex Mono",ui-monospace,monospace;transform:translateY(2px);transition:color .2s}
+.mode-toggle .mode-option{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;box-sizing:border-box;height:40px;min-width:96px;padding:0 12px;border-radius:999px;color:#c2d0d2;text-align:center;font:500 13px/1 "IBM Plex Mono",ui-monospace,monospace;transition:color .2s}
+.mode-toggle .mode-label{transform:translateY(-2px)}
 .mode-toggle .mode-option.is-active{color:#09201d;background:transparent;box-shadow:none}
 .mode-toggle.is-simple::before{transform:translateX(100%)}
 body.simple-mode .menu-toggle{background:#101a21;color:var(--ink);border-color:#49616b}
@@ -87,8 +88,8 @@ body.simple-mode .menu-toggle{background:#101a21;color:var(--ink);border-color:#
       </div>
     </div>
     <button type="button" id="mode-toggle" class="mode-toggle" aria-label="Switch to Simple CV">
-      <span class="mode-option is-active" data-mode="portfolio">Portfolio</span>
-      <span class="mode-option" data-mode="simple">Simple CV</span>
+      <span class="mode-option is-active" data-mode="portfolio"><span class="mode-label">Portfolio</span></span>
+      <span class="mode-option" data-mode="simple"><span class="mode-label">Simple CV</span></span>
     </button>
     <div aria-hidden="true"></div>
   </div>
