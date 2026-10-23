@@ -320,7 +320,7 @@ const setMode=simple=>{document.body.classList.toggle('simple-mode',simple);upda
     for(const stripe of sweepLines){
       const order=reversed?1-stripe.order:stripe.order,delay=(.5-.5*Math.cos(Math.PI*order))*fade,local=Math.max(0,Math.min(1,(elapsed-delay)/span)),eased=.5-.5*Math.cos(Math.PI*local);
       stripe.line.setAttribute('stroke-width',(stripe.maxWidth*(revealing?1-eased:eased)).toFixed(2));
-      const from=transitionFromSimple?[234,240,241]:[8,12,16],to=transitionFromSimple?[8,12,16]:[234,240,241],mix=revealing ? 0.5+0.5*eased : 0.5*eased,color=from.map((channel,index)=>Math.round(channel+(to[index]-channel)*mix)).join(',');
+      const from=transitionFromSimple?[234,240,241]:[8,12,16],to=transitionFromSimple?[8,12,16]:[234,240,241],mix=revealing ? 0.5+0.5*progress : 0.5*progress,color=from.map((channel,index)=>Math.round(channel+(to[index]-channel)*mix)).join(',');
       stripe.line.setAttribute('stroke',`rgb(${color})`);
     }
   }
